@@ -5,11 +5,10 @@ import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 
 import mdx from "@astrojs/mdx";
+import { transformerCopyButton } from "@rehype-pretty/transformers/copy-button";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkDirective from "remark-directive";
 import remarkDirectiveToHtml from "./src/plugins/remark-to-directive-to-html";
-import { transformerCopyButton } from "@rehype-pretty/transformers/copy-button";
-import remarkRehype from "remark-rehype";
 
 export default defineConfig({
   markdown: {
@@ -19,7 +18,7 @@ export default defineConfig({
       [
         rehypePrettyCode,
         {
-          theme: "github-dark",
+          theme: "dracula",
           transformers: [
             transformerCopyButton({
               visibility: "hover",
@@ -29,7 +28,7 @@ export default defineConfig({
         },
       ],
     ],
-    // gfm: true,
+    gfm: true,
   },
   integrations: [react(), mdx()],
 
