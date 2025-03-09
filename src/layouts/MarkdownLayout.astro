@@ -1,11 +1,13 @@
 ---
 import "../styles/global.css";
 import "../styles/markdown-layout.css";
+import { createLocalPath, attachHeading } from "../utils/link";
 import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter, headings } = Astro.props;
 
 const hasNavigation = frontmatter.prev !== null || frontmatter.next !== null;
+console.log(Astro.url.pathname);
 ---
 
 <BaseLayout title={frontmatter.title}>
@@ -19,7 +21,7 @@ const hasNavigation = frontmatter.prev !== null || frontmatter.next !== null;
             <div class="mt-4 pt-4 flex flex-row justify-between border-t-1 border-t-neutral-200">
               {frontmatter.prev != null && (
                 <a
-                  href={new URL(frontmatter.prev.path, Astro.url).pathname}
+                  href={createLocalPath(frontmatter.prev.path)}
                   class="px-4 py-2 border-1 border-neutral-400 rounded-md !no-underline"
                 >
                   ← {frontmatter.prev.name}
@@ -27,7 +29,7 @@ const hasNavigation = frontmatter.prev !== null || frontmatter.next !== null;
               )}
               {frontmatter.next != null && (
                 <a
-                  href={new URL(frontmatter.next.path, Astro.url).pathname}
+                  href={createLocalPath(frontmatter.next.path)}
                   class="px-4 py-2 border-1 border-neutral-400 rounded-md !no-underline"
                 >
                   {frontmatter.next.name} →
@@ -44,7 +46,7 @@ const hasNavigation = frontmatter.prev !== null || frontmatter.next !== null;
             <a
               class={`inline-block w-full text-sm text-sky-300`}
               style={`margin-left: ${(depth - 2) * 8}px`}
-              href={`${Astro.url}#${slug}`}
+              href={attachHeading(Astro.url.pathname, slug)}
             >
               {text}
             </a>
