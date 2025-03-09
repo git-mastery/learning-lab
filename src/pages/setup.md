@@ -2,10 +2,10 @@
 layout: ../layouts/MarkdownLayout.astro
 title: Setup
 prev:
-  path: /
+  path: .
   name: Home
 next:
-  path: /lessons
+  path: lessons
   name: Lessons
 ---
 

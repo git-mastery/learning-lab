@@ -19,7 +19,7 @@ const hasNavigation = frontmatter.prev !== null || frontmatter.next !== null;
             <div class="mt-4 pt-4 flex flex-row justify-between border-t-1 border-t-neutral-200">
               {frontmatter.prev != null && (
                 <a
-                  href={frontmatter.prev.path}
+                  href={new URL(frontmatter.prev.path, Astro.url).pathname}
                   class="px-4 py-2 border-1 border-neutral-400 rounded-md !no-underline"
                 >
                   ← {frontmatter.prev.name}
@@ -27,7 +27,7 @@ const hasNavigation = frontmatter.prev !== null || frontmatter.next !== null;
               )}
               {frontmatter.next != null && (
                 <a
-                  href={frontmatter.next.path}
+                  href={new URL(frontmatter.next.path, Astro.url).pathname}
                   class="px-4 py-2 border-1 border-neutral-400 rounded-md !no-underline"
                 >
                   {frontmatter.next.name} →
@@ -44,7 +44,7 @@ const hasNavigation = frontmatter.prev !== null || frontmatter.next !== null;
             <a
               class={`inline-block w-full text-sm text-sky-300`}
               style={`margin-left: ${(depth - 2) * 8}px`}
-              href={`#${slug}`}
+              href={`${Astro.url}#${slug}`}
             >
               {text}
             </a>
