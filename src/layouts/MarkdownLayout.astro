@@ -44,7 +44,7 @@ const hasNavigation = frontmatter.prev !== null || frontmatter.next !== null;
             <a
               class={`inline-block w-full text-sm text-sky-300`}
               style={`margin-left: ${(depth - 2) * 8}px`}
-              href={slug}
+              href={`#${slug}`}
             >
               {text}
             </a>
