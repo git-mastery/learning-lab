@@ -1,5 +1,6 @@
 ---
 import { createLocalPath } from "../utils/link";
+import { GiHamburgerMenu } from "react-icons/gi";
 import Link from "./Link.astro";
 
 const currentPath = Astro.url.pathname;
@@ -13,11 +14,25 @@ const directory = [
 ];
 ---
 
+<style>
+  .expanded {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+</style>
+
 <header
-  class="h-full flex flex-row justify-between items-center w-[80%] py-4 mx-auto border-b-1 border-b-neutral-200"
+  class="h-full flex flex-row justify-between items-center flex-wrap lg:w-[80%] w-[90%] py-4 mx-auto border-b-1 border-b-neutral-200"
 >
   <p class="font-bold text-lg !mb-0 !pb-0">git-mastery</p>
-  <nav class="h-full flex flex-row items-center gap-4">
+  <GiHamburgerMenu
+    size={20}
+    className="hover:cursor-pointer lg:hidden hamburger"
+  />
+  <nav
+    class="h-full lg:flex-row lg:items-center lg:m-0 lg:gap-4 lg:flex gap-2 mt-4 hidden menu"
+  >
     {
       directory.map(([path, name]) => (
         <Link
@@ -34,3 +49,9 @@ const directory = [
     }
   </nav>
 </header>
+
+<script is:inline>
+  document.querySelector(".hamburger")?.addEventListener("click", () => {
+    document.querySelector(".menu")?.classList.toggle("expanded");
+  });
+</script>
