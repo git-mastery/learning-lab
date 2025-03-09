@@ -9,6 +9,7 @@ const lessons = defineCollection({
     draft: z.boolean().optional().default(false),
     description: z.string().optional(),
     categories: z.array(z.string()).optional().default([]),
+    order: z.number().optional(),
     next: z
       .object({
         path: z.string(),

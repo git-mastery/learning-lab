@@ -7,6 +7,7 @@ draft: false
 prev:
   path: /lessons/introduction
   name: Introduction
+order: 1
 ---
 
 ## What is a commit?

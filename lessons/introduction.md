@@ -4,6 +4,7 @@ description: Introducing the history of the Git version control, the fundamental
 next:
   path: /lessons/git-commit
   name: Commits
+order: 0
 ---
 
 ## What is Git?
