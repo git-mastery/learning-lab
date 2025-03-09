@@ -9,13 +9,23 @@ next:
   name: Lessons
 ---
 
-:::note
-hi
+:::callout{.danger}
+Git Mastery relies on the following tools to be properly setup:
+
+1. Git
+2. Github
+3. Github CLI
+
+It is very important that these steps are done correctly to ensure that you can follow along.
 :::
 
 ## Git
 
 Follow the installation steps for your [operating system (OS) here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+
+:::callout{.info}
+If you are using Windows, use [Git Bash](https://git-scm.com/downloads) or [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) as Git Mastery only works with Bash.
+:::
 
 To ensure that everything is working, run the following commands:
 
@@ -49,7 +59,15 @@ git config --global user.name "<your name>"
 
 ## Github
 
+:::callout{.info}
+We strongly encourage the use of SSH for Github as that is the most hassle-free setup.
+:::
+
 Create a [new Github account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) _if you don’t have an account_
+
+:::callout{.info}
+The following instructions are taken from the [official Github documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
+:::
 
 Check if you already have an existing SSH key:
 
@@ -72,11 +90,19 @@ Create a new SSH key:
 ssh-keygen -t ed25519 -C "your email"
 ```
 
+:::callout{.info}
+You can press **Enter** to accept all of the defaults (including using an empty passphrase).
+:::
+
 Add the private SSH key to the `ssh-agent`:
 
 ```bash
 ssh-add ~/.ssh/id_ed25519
 ```
+
+:::callout{.warning}
+This step can vary between operating systems. Please refer [to this page](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=mac#adding-your-ssh-key-to-the-ssh-agent) and select your operating system to ensure that you are using the right steps.
+:::
 
 Once done, you can add the SSH key to Github.
 
@@ -111,6 +137,10 @@ After you have installed Github CLI, run the following command to login to your 
 ```bash
 gh auth login
 ```
+
+:::callout{.warning}
+You should have setup SSH for Github from the step above. If so, you should select the option for using SSH for Github CLI.
+:::
 
 You can verify that it worked by running the following:
 

@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+div.callout {
+  @apply px-6 py-2 rounded-md my-2;
+}
+
+div.callout.danger {
+  @apply bg-red-50 border-l-4 border-l-red-600;
+}
+
+div.callout.danger::before {
+  content: "🚨 DANGER";
+  @apply inline-block font-bold text-lg mb-2 uppercase;
+}
+
+div.callout.warning {
+  @apply bg-yellow-50 border-l-4 border-l-yellow-600;
+}
+
+div.callout.warning::before {
+  content: "⚠️ Warning";
+  @apply inline-block font-bold text-lg mb-2 uppercase;
+}
+
+div.callout.info {
+  @apply bg-blue-50 border-l-4 border-l-blue-600;
+}
+
+div.callout.info::before {
+  content: "ℹ Information";
+  @apply inline-block font-bold text-lg mb-2 uppercase;
+}

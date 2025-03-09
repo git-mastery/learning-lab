@@ -28,3 +28,10 @@ p {
   @apply mb-2;
 }
 
+ol {
+  @apply list-decimal mb-2 list-inside;
+}
+
+ul {
+  @apply list-disc mb-2;
+}

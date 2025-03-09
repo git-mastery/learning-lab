@@ -1,23 +1,21 @@
 import { visit } from "unist-util-visit";
 import type { Plugin } from "unified";
-import type { Root, Data } from "mdast";
+import type { Root } from "mdast";
 
-interface DirectiveNode extends Data {
-  name: string;
-  attributes?: Record<string, string>;
-}
-
+/**
+ * Handles all types of remark directives.
+ */
 const remarkDirectiveToHtml: Plugin<[], Root> = () => {
   return (tree) => {
     visit(tree, (node: any) => {
-      if (node.type === "containerDirective") {
-        const className = node.name; // Converts :::note to class="note"
+      if (node.type === "containerDirective" && node.name === "callout") {
+        const className = node.name;
+        const hintClassNames = (node.attributes || {}).class || "";
 
         node.data = {
           hName: "div",
           hProperties: {
-            className,
-            ...(node.attributes || {}),
+            className: `${className} ${hintClassNames}`,
           },
         };
       }
