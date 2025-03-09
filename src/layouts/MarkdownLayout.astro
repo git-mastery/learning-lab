@@ -3,10 +3,30 @@ import "../styles/global.css";
 import "../styles/markdown-layout.css";
 import BaseLayout from "./BaseLayout.astro";
 
-const { title, frontmatter } = Astro.props;
+const { frontmatter, headings } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title}>
-  <h1>{frontmatter.title}</h1>
-  <slot />
+  <div class="w-[80%] mx-auto my-12">
+    <h1>{frontmatter.title}</h1>
+    <div class="flex flex-row flex-3/4 gap-12 relative">
+      <div>
+        <slot />
+      </div>
+      <div class="flex-1/4 sticky top-0">
+        <p class="text-neutral-400">Table of Contents</p>
+        {
+          headings.map(({ depth, slug, text }) => (
+            <a
+              class={`inline-block w-full text-sm text-sky-300`}
+              style={`margin-left: ${(depth - 2) * 8}px`}
+              href={slug}
+            >
+              {text}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </BaseLayout>
