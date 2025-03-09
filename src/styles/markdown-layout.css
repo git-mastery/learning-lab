@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 div.callout {
-  @apply px-6 py-2 rounded-md my-6;
+  @apply px-6 py-2 pt-4 rounded-md my-6;
 }
 
 div.callout.danger {
@@ -9,7 +9,7 @@ div.callout.danger {
 }
 
 div.callout.danger::before {
-  content: "🚨 DANGER";
+  /* content: "🚨 DANGER"; */
   @apply inline-block font-bold text-lg mb-2 uppercase;
 }
 
@@ -18,7 +18,7 @@ div.callout.warning {
 }
 
 div.callout.warning::before {
-  content: "⚠️ Warning";
+  /* content: "⚠️ Warning"; */
   @apply inline-block font-bold text-lg mb-2 uppercase;
 }
 
@@ -27,7 +27,7 @@ div.callout.info {
 }
 
 div.callout.info::before {
-  content: "ℹ Information";
+  /* content: "ℹ Information"; */
   @apply inline-block font-bold text-lg mb-2 uppercase;
 }
 
