@@ -4,7 +4,7 @@ import Link from "./Link.astro";
 const currentPath = Astro.url.pathname;
 
 const directory = [
-  ["", "Home"],
+  [".", "Home"],
   ["setup", "Setup"],
   ["lessons", "Lessons"],
   ["https://git-mastery.github.io/progress-dashboard", "Progress dashboard"],
@@ -25,7 +25,7 @@ const directory = [
               ? "bg-blue-200 rounded-md px-2 py-1"
               : "text-neutral-500"
           }
-          href={path}
+          href={new URL(path, Astro.url).pathname}
         >
           {name}
         </Link>

@@ -13,7 +13,7 @@ import remarkDirectiveToHtml from "./src/plugins/remark-to-directive-to-html";
 
 export default defineConfig({
   site: "https://git-mastery.github.io",
-  base: "learning-lab",
+  base: "/learning-lab",
   markdown: {
     syntaxHighlight: false,
     remarkPlugins: [remarkDirective, remarkDirectiveToHtml],
