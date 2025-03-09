@@ -33,5 +33,9 @@ ol {
 }
 
 ul {
-  @apply list-disc mb-2;
+  @apply list-disc mb-2 list-inside;
+}
+
+a {
+  @apply underline;
 }
