@@ -4,6 +4,7 @@ import react from "@astrojs/react";
 
 import tailwindcss from "@tailwindcss/vite";
 
+import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import { transformerCopyButton } from "@rehype-pretty/transformers/copy-button";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -15,6 +16,7 @@ export default defineConfig({
     syntaxHighlight: false,
     remarkPlugins: [remarkDirective, remarkDirectiveToHtml],
     rehypePlugins: [
+      rehypeHeadingIds,
       [
         rehypePrettyCode,
         {
