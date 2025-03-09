@@ -1,0 +1,6 @@
+singleQuote: false
+bracketSpacing: true
+htmlWhitespaceSensitivity: ignore
+singleAttributePerLine: true
+plugins:
+  - prettier-plugin-astro

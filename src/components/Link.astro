@@ -1,0 +1,21 @@
+---
+import { RiExternalLinkLine } from "react-icons/ri";
+const { href, class: className } = Astro.props;
+
+const isRelative =
+  typeof href === "string" &&
+  !href.startsWith("http") &&
+  !href.startsWith("https");
+---
+
+<a
+  target={isRelative ? "_self" : "_blank"}
+  href={href}
+  class:list={[
+    className,
+    "inline-flex flex-row gap-2 items-center hover:cursor-pointer",
+  ]}
+>
+  <slot />
+  {!isRelative && <RiExternalLinkLine />}
+</a>
