@@ -16,6 +16,8 @@
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
     "hast-util-class-list": "^2.0.1",
+    "lodash": "^4.17.21",
+    "lodash.kebabcase": "^4.1.1",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "react": "^19.0.0",
@@ -38,6 +40,8 @@
     "preview": "astro preview"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.16",
+    "@types/lodash.kebabcase": "^4.1.9",
     "@types/remark-hint": "^1.0.6",
     "@types/unist": "^3.0.3"
   }

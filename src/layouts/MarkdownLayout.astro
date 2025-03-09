@@ -3,36 +3,117 @@ import "../styles/global.css";
 import "../styles/markdown-layout.css";
 import { createLocalPath, attachHeading } from "../utils/link";
 import BaseLayout from "./BaseLayout.astro";
+import { RiExternalLinkLine } from "react-icons/ri";
 
 const { frontmatter, headings } = Astro.props;
 
-const hasNavigation = frontmatter.prev !== null || frontmatter.next !== null;
-console.log(Astro.url.pathname);
+const title = frontmatter?.title;
+const prev = frontmatter?.prev;
+const next = frontmatter?.next;
+const categories = frontmatter?.categories ?? [];
+const hasNavigation = prev != null || next != null;
+
+const problemSetsResponse = await fetch(
+  "https://raw.githubusercontent.com/git-mastery/problems-directory/refs/heads/main/problems.json",
+);
+const problemSets = await problemSetsResponse.json();
+const availableProblemSets = problemSets.filter(
+  (problemSet: { topics: string[] }) =>
+    categories.every((category: string) =>
+      problemSet.topics.includes(category),
+    ),
+);
 ---
 
-<BaseLayout title={frontmatter.title}>
+<BaseLayout title={title}>
   <div class="w-[80%] mx-auto my-12">
-    <h1>{frontmatter.title}</h1>
-    <div class="flex flex-row flex-3/4 gap-12 relative">
-      <div>
+    <h1>{title}</h1>
+    <div class="flex flex-row gap-12 relative">
+      <div class="flex-3/4">
         <slot />
         {
-          hasNavigation && (
-            <div class="mt-4 pt-4 flex flex-row justify-between border-t-1 border-t-neutral-200">
-              {frontmatter.prev != null && (
+          categories.length !== 0 && (
+            <div>
+              <h2>Practice problem sets</h2>
+              {availableProblemSets.length === 0 && (
+                <p>
+                  We do not have any available problem sets for this topic yet,
+                  check back again soon! 😅
+                </p>
+              )}
+              {availableProblemSets.length > 0 && (
+                <table class="table-fixed w-full bg-white border border-collapse border-gray-300 rounded-md">
+                  <thead>
+                    <tr>
+                      <th class="bg-gray-200 border border-gray-300 px-4 py-2 text-left">
+                        Problem name
+                      </th>
+                      <th class="bg-gray-200 border border-gray-300 px-4 py-2 text-left">
+                        Details
+                      </th>
+                      <th class="bg-gray-200 border border-gray-300 px-4 py-2 text-left">
+                        Attempts
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {availableProblemSets.map(
+                      (problemSet: {
+                        name: string;
+                        html_url: string;
+                        forks: number;
+                      }) => (
+                        <tr>
+                          <td class="border border-gray-300 px-4 py-2 text-left">
+                            {problemSet.name}
+                          </td>
+                          <td class="border border-gray-300 px-4 py-2 text-left">
+                            <a
+                              target="_blank"
+                              href={problemSet.html_url}
+                            >
+                              Link
+                            </a>
+                          </td>
+                          <td class="border border-gray-300 px-4 py-2 text-left">
+                            {problemSet.forks}
+                          </td>
+                        </tr>
+                      ),
+                    )}
+                  </tbody>
+                </table>
+              )}
+              <p class="italic mt-3">
+                For more problem sets, visit the{" "}
                 <a
-                  href={createLocalPath(frontmatter.prev.path)}
-                  class="px-4 py-2 border-1 border-neutral-400 rounded-md !no-underline"
+                  href="https://git-mastery.github.io/problems-directory"
+                  class="inline-flex flex-row items-center gap-1"
+                  target="_blank"
                 >
-                  ← {frontmatter.prev.name}
+                  problems directory <RiExternalLinkLine />
+                </a>
+              </p>
+            </div>
+          )
+        }
+        {
+          hasNavigation && (
+            <div class="mt-4 pt-4 flex flex-row gap-4 justify-between border-t-1 border-t-neutral-200">
+              {prev != null && (
+                <a
+                  href={createLocalPath(prev?.path)}
+                  class="hover:shadow-md transition duration-300 inline-block text-left w-full px-4 py-2 border-1 border-neutral-300 rounded-md !no-underline"
+                >
+                  ← {prev.name}
                 </a>
               )}
-              {frontmatter.next != null && (
+              {next != null && (
                 <a
-                  href={createLocalPath(frontmatter.next.path)}
-                  class="px-4 py-2 border-1 border-neutral-400 rounded-md !no-underline"
+                  href={createLocalPath(next?.path)}
+                  class="hover:shadow-md transition duration-300 inline-block text-right w-full px-4 py-2 border-1 border-neutral-300 rounded-md !no-underline"
                 >
-                  {frontmatter.next.name} →
+                  {next.name} →
                 </a>
               )}
             </div>
@@ -42,7 +123,7 @@ console.log(Astro.url.pathname);
       <div class="flex-1/4 sticky top-4 h-full">
         <p class="text-neutral-400">Table of Contents</p>
         {
-          headings.map(({ depth, slug, text }) => (
+          headings?.map(({ depth, slug, text }) => (
             <a
               class={`inline-block w-full text-sm text-sky-300`}
               style={`margin-left: ${(depth - 2) * 8}px`}
