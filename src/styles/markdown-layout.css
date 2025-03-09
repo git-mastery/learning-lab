@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 div.callout {
-  @apply px-6 py-2 rounded-md my-2;
+  @apply px-6 py-2 rounded-md my-6;
 }
 
 div.callout.danger {
-  @apply bg-red-50 border-l-4 border-l-red-600;
+  @apply bg-red-50 border-l-4 border-l-red-400;
 }
 
 div.callout.danger::before {
@@ -14,7 +14,7 @@ div.callout.danger::before {
 }
 
 div.callout.warning {
-  @apply bg-yellow-50 border-l-4 border-l-yellow-600;
+  @apply bg-yellow-50 border-l-4 border-l-yellow-400;
 }
 
 div.callout.warning::before {
@@ -23,10 +23,14 @@ div.callout.warning::before {
 }
 
 div.callout.info {
-  @apply bg-blue-50 border-l-4 border-l-blue-600;
+  @apply bg-blue-50 border-l-4 border-l-blue-400;
 }
 
 div.callout.info::before {
   content: "ℹ Information";
   @apply inline-block font-bold text-lg mb-2 uppercase;
+}
+
+pre {
+  @apply px-6 py-2 rounded-md my-2;
 }
