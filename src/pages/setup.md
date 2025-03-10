@@ -19,6 +19,33 @@ Git Mastery relies on the following tools to be properly setup:
 It is very important that these steps are done correctly to ensure that you can follow along.
 :::
 
+## Bash
+
+git-mastery uses Bash for all of its operations. You should verify that you have access to Bash:
+
+::::tabs{key=os}
+:::tab{key=windows header="Windows"}
+Check if you have Git Bash or Windows Subsystem for Linux (WSL) installed on your local machine.
+:::
+
+:::tab{key=unix header="Linux/MacOS"}
+Bash is usually installed on most Linux/MacOS machines. To verify that it is installed, you need to open a terminal (search your applications for "Terminal") and type the following command:
+
+```bash
+bash --version
+```
+
+If you have Bash installed, you should see a similar output:
+
+```bash
+GNU bash, version 3.2.57(1)-release (arm64-apple-darwin23)
+Copyright (C) 2007 Free Software Foundation, Inc.
+```
+
+:::
+
+::::
+
 ## Git
 
 Follow the installation steps for your [operating system (OS) here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).

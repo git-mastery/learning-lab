@@ -36,7 +36,7 @@ pre {
 }
 
 div.tabs {
-  @apply mb-8;
+  @apply mb-4;
 }
 
 div.tabs .selector {
@@ -64,7 +64,7 @@ div.tabs .tabs-content {
 }
 
 div.tabs .active-selector {
-  @apply bg-gray-200;
+  @apply bg-neutral-100;
 }
 
 div.tabs div.tab:not(.active) {
