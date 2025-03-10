@@ -131,24 +131,38 @@ git config --global user.email "<your email>"
 
 ## Github
 
-:::callout{.info}
-We strongly encourage the use of SSH for Github as that is the most hassle-free setup.
+:::callout{.warning}
+git-mastery uses Github to validate your submissions and provide feedback on your submission. Even if you already have a Github account created, you should still verify that you have setup SSH.
 :::
 
+:::::::tabs{key=github-setup}
+::::::tab{key=account-creation header="Account creation"}
 Create a [new Github account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) _if you don’t have an account_
+::::::
 
-:::callout{.info}
+::::::tab{key=ssh-verification header="SSH verification"}
+Verify if you already have SSH setup for Github:
+
+```bash
+ssh -T git@github.com
+```
+
+If you have already set it up, you should see a message containing your username. If so, feel free to skip to installing [Github CLI](/learning-lab/setup#github-cli).
+::::::
+
+::::::tab{key=ssh-setup header="SSH setup"}
+
+:::::callout{.info}
 The following instructions are taken from the [official Github documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
-:::
+:::::
 
-Check if you already have an existing SSH key:
+Check if you already have an existing SSH key. The following command lists the files in your `~/.ssh/` folder (including hidden files).
 
 ```bash
 ls -al ~/.ssh
-# Lists the files in your .ssh directory, if they exist
 ```
 
-If you have an existing SSH key, it might have one of the following names:
+If you have an existing SSH key, you might see one of the following entries:
 
 - `id_rsa.pub`
 - `id_ecdsa.pub`
@@ -162,19 +176,96 @@ Create a new SSH key:
 ssh-keygen -t ed25519 -C "your email"
 ```
 
-:::callout{.info}
+:::::callout{.info}
 You can press **Enter** to accept all of the defaults (including using an empty passphrase).
+:::::
+
+Add the private SSH key to the `ssh-agent`. For more information about each step, refer to the [Github documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=mac#adding-your-ssh-key-to-the-ssh-agent).
+
+:::::tabs{key=os-all}
+::::tab{key=macos header="MacOS"}
+
+Start the `ssh-agent` in the background.
+
+```bash
+eval "$(ssh-agent -s)"
+```
+
+You should see something like:
+
+```bash
+> Agent pid ...
+```
+
+Then, if you are using macOS Sierra 10.12.2 or later, you will need to modify your `~/.ssh/config` to automatically load keys into the `ssh-agent`.
+
+To do so, verify that you have `~/.ssh/config` on your machine, otherwise, run the following command to create the file:
+
+```bash
+touch ~/.ssh/config
+```
+
+Then, edit the file to include the following:
+
+```bash
+Host github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+```
+
+Finally, you can add your SSH private key to the `ssh-agent`:
+
+```bash
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+```
+
+::::
+
+::::tab{key=windows header="Windows"}
+
+:::callout{.warning}
+This will be the only time that you will open Powershell and run Powershell commands on Windows. For every other command, please use Bash instead.
 :::
 
-Add the private SSH key to the `ssh-agent`:
+In an admin elevated PowerShell window, start the `ssh-agent`:
+
+```powershell
+Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+Start-Service ssh-agent
+```
+
+Add your SSH private key to the `ssh-agent`:
 
 ```bash
 ssh-add ~/.ssh/id_ed25519
 ```
 
-:::callout{.warning}
-This step can vary between operating systems. Please refer [to this page](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=mac#adding-your-ssh-key-to-the-ssh-agent) and select your operating system to ensure that you are using the right steps.
-:::
+::::
+
+::::tab{key=linux header="Linux"}
+
+Start the `ssh-agent` in the background.
+
+```bash
+eval "$(ssh-agent -s)"
+```
+
+You should see something like:
+
+```bash
+> Agent pid ...
+```
+
+Add your SSH private key to the `ssh-agent`:
+
+```bash
+ssh-add ~/.ssh/id_ed25519
+```
+
+::::
+
+:::::
 
 Once done, you can add the SSH key to Github.
 
@@ -197,10 +288,14 @@ ssh -T git@github.com
 Verify that the fingerprint in the message matches [Github's public key fingerprint](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints) and if it does, type `yes`.
 
 You should see a message containing your username.
+::::::
+:::::::
 
 ## Github CLI
 
-Git Mastery uses Github CLI to streamline and automate the download and submission processes.
+:::callout{.warning}
+git-mastery uses Github CLI to streamline and automate the download and submission processes.
+:::
 
 Follow the [installation instructions here](https://github.com/cli/cli#installation) for your operating system.
 
@@ -220,19 +315,34 @@ You can verify that it worked by running the following:
 gh auth status
 ```
 
-## Setting up Git Mastery
+You should see something similar to the following:
 
-Git Mastery provides a script that sets up your local environment for you. Run the following command in a suitable folder and follow the prompts accordingly:
+```bash
+github.com
+  ✓ Logged in to github.com account woojiahao (keyring)
+  - Active account: true
+  - Git operations protocol: ssh
+  - Token: gho_************************************
+  - Token scopes: 'admin:public_key', 'gist', 'read:org', 'repo'
+```
+
+## Setting up git-mastery
+
+Now that you have setup all the necessary tools for git-mastery, it's time to setup git-mastery itself.
+
+Git Mastery provides a script that sets up your local environment for you.
+
+Run the following command in a suitable folder and follow the prompts accordingly:
 
 ```bash
 curl -O https://raw.githubusercontent.com/git-mastery/scripts/refs/heads/main/setup.sh \
   && bash setup.sh
 ```
 
-Navigate to <https://github.com/git-mastery/diagnostic/pulls> and find **[Your Github username] [diagnostic] Submission**.
+Once done, navigate to <https://github.com/git-mastery/diagnostic/pulls> and find **[Your Github username] [diagnostic] Submission**.
 
 If you see the following message, you have setup Git Mastery for your local environment successfully!
 
-<div style="text-align:center">
-  <img src="success.png" />
+<div style="display: flex; justify-content: center;">
+  <img width=500 src="/learning-lab/images/setup/success.png" />
 </div>
