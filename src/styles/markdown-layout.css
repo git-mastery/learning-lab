@@ -63,8 +63,8 @@ div.tabs .tabs-content {
   @apply p-4 border-1 border-neutral-300 rounded-b-md;
 }
 
-div.tabs .active-selector {
-  @apply bg-neutral-100 font-bold;
+div.tabs div.selector div[data-tab-selector-key]:not(.active-selector) {
+  @apply bg-neutral-50 text-gray-500;
 }
 
 div.tabs div.tab:not(.active) {
