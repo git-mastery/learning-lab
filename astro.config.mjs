@@ -9,16 +9,19 @@ import mdx from "@astrojs/mdx";
 import { transformerCopyButton } from "@rehype-pretty/transformers/copy-button";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkDirective from "remark-directive";
-import remarkDirectiveToHtml from "./src/plugins/remark-to-directive-to-html";
+import rehypeTabs from "./src/plugins/rehype-tabs";
+import remarkCallout from "./src/plugins/remark-callout";
+import remarkTabs from "./src/plugins/remark-tabs";
 
 export default defineConfig({
   site: "https://git-mastery.github.io",
   base: "/learning-lab",
   markdown: {
     syntaxHighlight: false,
-    remarkPlugins: [remarkDirective, remarkDirectiveToHtml],
+    remarkPlugins: [remarkDirective, remarkCallout, remarkTabs],
     rehypePlugins: [
       rehypeHeadingIds,
+      rehypeTabs,
       [
         rehypePrettyCode,
         {
