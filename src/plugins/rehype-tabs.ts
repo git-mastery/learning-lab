@@ -30,8 +30,6 @@ const rehypeTabs: Plugin<[], Root> = () => {
               },
             ],
           });
-        } else if (classNames.includes("tab")) {
-          const tabKey = node.properties["data-tab-key"];
         } else if ("data-tab-selector-key" in node.properties) {
           // This is the tab selector
           const tabKey = node.properties["data-tab-selector-key"];
@@ -47,12 +45,13 @@ const rehypeTabs: Plugin<[], Root> = () => {
                 type: "text",
                 value: `
                 (() => {
-                    const selectorTabsAcross = document.querySelectorAll("div.tabs[data-tabs-key='${tabsKey}'] div.selector div[data-tab-selector-key='${tabKey}']");
-                    const tabs = document.querySelectorAll("div.tabs[data-tabs-key='${tabsKey}'] div.tabs-content div.tab");
-                    const selectorTabs = document.querySelectorAll("div.tabs[data-tabs-key='${tabsKey}'] div.selector div[data-tab-selector-key]");
+                    const selectorTabsAcross = document.querySelectorAll("div.tabs[data-tabs-key='${tabsKey}'] > div.selector > div[data-tab-selector-key='${tabKey}']");
+                    const tabs = document.querySelectorAll("div.tabs[data-tabs-key='${tabsKey}'] > div.tabs-content > div.tab");
+                    const selectorTabs = document.querySelectorAll("div.tabs[data-tabs-key='${tabsKey}'] > div.selector > div[data-tab-selector-key]");
 
                     const value = localStorage.getItem("${localStorageTabsKey}")
                     select(value)
+
 
                     function select(key) {
                         for (const tab of tabs) {
