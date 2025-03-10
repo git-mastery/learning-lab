@@ -34,3 +34,27 @@ div.callout.info::before {
 pre {
   @apply px-6 py-4 rounded-md my-2 overflow-scroll;
 }
+
+div.tabs .selector {
+  @apply flex flex-row;
+}
+
+div.tabs .selector div[data-tab-selector-key] {
+  @apply inline-block px-4 py-2 border-1 border-neutral-300 border-b-0 hover:cursor-pointer;
+}
+
+div.tabs .selector div[data-tab-selector-key]:first-child {
+  @apply rounded-tl-md;
+}
+
+div.tabs .selector div[data-tab-selector-key]:last-child {
+  @apply rounded-tr-md;
+}
+
+div.tabs .selector div[data-tab-selector-key]:not(:first-child) {
+  @apply border-l-0;
+}
+
+div.tabs .tabs-content {
+  @apply p-4 border-1 border-neutral-300;
+}

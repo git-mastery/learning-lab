@@ -54,14 +54,26 @@ const remarkTabs: Plugin<[], Root> = () => {
                 ],
               })),
             },
-            ...tabs,
+            {
+              type: "element",
+              data: {
+                hName: "div",
+                hProperties: {
+                  className: "tabs-content",
+                },
+              },
+              children: [...tabs],
+            },
           ],
         };
         parent.children[index] = wrapper;
       } else if (node.type === "containerDirective" && node.name === "tab") {
         // We need to attach some properties to the tab containers
         node.data = {
-          hProperties: { "data-tab-key": node.attributes.key },
+          hProperties: {
+            className: "tab",
+            "data-tab-key": node.attributes.key,
+          },
         };
       }
     });
