@@ -7,6 +7,9 @@ draft: false
 prev:
   path: /lessons/introduction
   name: Introduction
+next:
+  path: /lessons/integrating-remote-repositories
+  name: Integrating with remote repositories
 order: 1
 ---
 
