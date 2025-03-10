@@ -10,25 +10,19 @@ next:
 ---
 
 :::callout{.danger}
-Git Mastery relies on the following tools to be properly setup:
-
-1. Git
-2. Github
-3. Github CLI
-
-It is very important that these steps are done correctly to ensure that you can follow along.
+git-mastery provides many useful toolings to improve your learning experience. Make sure that everything in this guide is setup properly before proceeding.
 :::
 
 ## Bash
 
-git-mastery uses Bash for all of its operations. You should verify that you have access to Bash:
-
-::::tabs{key=os}
-:::tab{key=windows header="Windows"}
-Check if you have Git Bash or Windows Subsystem for Linux (WSL) installed on your local machine.
+:::callout{.warning}
+git-mastery uses [Bash](https://www.gnu.org/software/bash/) to download problem sets and perform submissions on your behalf. So it is important that you have access to it.
 :::
 
-:::tab{key=unix header="Linux/MacOS"}
+Verify that you have Bash installed on your machine.
+
+:::::tabs{key=os}
+::::tab{key=unix header="Linux/MacOS"}
 Bash is usually installed on most Linux/MacOS machines. To verify that it is installed, you need to open a terminal (search your applications for "Terminal") and type the following command:
 
 ```bash
@@ -42,12 +36,61 @@ GNU bash, version 3.2.57(1)-release (arm64-apple-darwin23)
 Copyright (C) 2007 Free Software Foundation, Inc.
 ```
 
+::::
+
+::::tab{key=windows header="Windows"}
+
+To check if you have access to Bash on your Windows machine, first, check if you have Git Bash or Windows Subsystem for Linux (WSL) installed.
+
+:::callout{.info}
+You have Git Bash from a previous installation of Git, if so, that is perfectly alright.
 :::
+
+With Git Bash or WSL open, type the following command:
+
+```bash
+bash --version
+```
+
+If you have Bash installed, you should see a similar output:
+
+```bash
+GNU bash, version 3.2.57(1)-release (arm64-apple-darwin23)
+Copyright (C) 2007 Free Software Foundation, Inc.
+```
 
 ::::
 
+:::::
+
+Keep your terminal open, we will be using it for the rest of the setup.
+
 ## Git
 
+:::callout{.warning}
+**Take note!**
+
+You may have interacted with Git through GUIs like Github Desktop, GitKraken, and SourceTree. However, please use only the terminal for all of git-mastery. Doing so will allow you to build an intuition for how Git commands work.
+:::
+
+:::::tabs{key=git-setup}
+::::tab{key=verification header="Verification"}
+First, you should verify that you have Git installed already using the following command (which will display the version number of Git installed):
+
+```bash
+git version
+```
+
+If you see the following text, it is already present on your machine.
+
+```bash
+git version 2.48.1
+```
+
+If Git is already installed, feel free to skip to the next section of [setting up Github](./learning-lab/setup#github).
+::::
+
+::::tab{key=installation header="Installation"}
 Follow the installation steps for your [operating system (OS) here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 :::callout{.info}
@@ -66,23 +109,25 @@ You should see text like this:
 git version 2.48.1
 ```
 
-To verify that you have access to Bash, try to run the following command:
+::::
+
+::::tab{key=configuration header="Configuration"}
+Because we use Git with Github, we highly recommend that you perform the following configurations:
+
+The following command sets the name that will be associated with your Git commits. This name will be visible in any future commits pushed to Github from the command line. You can use any text if you wish to keep your real name private. For more information, refer to the [Github documentation](https://docs.github.com/en/get-started/git-basics/setting-your-username-in-git).
 
 ```bash
-pwd
+git config --global user.name "<your name>"
 ```
 
-If you are using Bash, you should see the current directory displayed.
-
-Once Git is setup on your local machine, do some initial configuration:
+The next command is used to set the email to be associated with your Git commits. Similar to setting your name, if you wish to keep your real email private, you can do so using a Github-provided `noreply` email as [described here](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address#setting-your-commit-email-address-on-github).
 
 ```bash
 git config --global user.email "<your email>"
 ```
 
-```bash
-git config --global user.name "<your name>"
-```
+::::
+:::::
 
 ## Github
 

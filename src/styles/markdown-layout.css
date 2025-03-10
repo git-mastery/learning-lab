@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 div.callout {
-  @apply px-6 py-2 pt-4 rounded-md my-6;
+  @apply lg:px-6 px-4 py-2 pt-4 rounded-md my-6;
 }
 
 div.callout.danger {
@@ -64,7 +64,7 @@ div.tabs .tabs-content {
 }
 
 div.tabs .active-selector {
-  @apply bg-neutral-100;
+  @apply bg-neutral-100 font-bold;
 }
 
 div.tabs div.tab:not(.active) {

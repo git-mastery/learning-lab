@@ -32,7 +32,6 @@ const rehypeTabs: Plugin<[], Root> = () => {
           });
         } else if (classNames.includes("tab")) {
           const tabKey = node.properties["data-tab-key"];
-          console.log(tabKey);
         } else if ("data-tab-selector-key" in node.properties) {
           // This is the tab selector
           const tabKey = node.properties["data-tab-selector-key"];
