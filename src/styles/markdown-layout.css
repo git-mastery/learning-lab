@@ -35,6 +35,10 @@ pre {
   @apply px-6 py-4 rounded-md my-2 overflow-scroll;
 }
 
+div.tabs {
+  @apply mb-8;
+}
+
 div.tabs .selector {
   @apply flex flex-row;
 }
@@ -56,5 +60,17 @@ div.tabs .selector div[data-tab-selector-key]:not(:first-child) {
 }
 
 div.tabs .tabs-content {
-  @apply p-4 border-1 border-neutral-300;
+  @apply p-4 border-1 border-neutral-300 rounded-b-md;
+}
+
+div.tabs .active-selector {
+  @apply bg-gray-200;
+}
+
+div.tabs div.tab:not(.active) {
+  @apply hidden;
+}
+
+div.tabs div.tab.active {
+  @apply block;
 }

@@ -27,6 +27,9 @@ const remarkTabs: Plugin<[], Root> = () => {
             hProperties: {
               className: "tabs",
               "data-tabs-key": node.attributes?.["key"] ?? "",
+              "data-tabs": JSON.stringify(
+                tabs.map((tab: Tab) => tab.attributes.key),
+              ),
             },
           },
           children: [
@@ -44,6 +47,7 @@ const remarkTabs: Plugin<[], Root> = () => {
                   hName: "div",
                   hProperties: {
                     "data-tab-selector-key": tab.attributes.key,
+                    "data-tabs-key": node.attributes?.["key"] ?? "",
                   },
                 },
                 children: [
