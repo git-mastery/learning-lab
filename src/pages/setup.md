@@ -9,13 +9,9 @@ next:
   name: Lessons
 ---
 
-:::callout{.danger}
-git-mastery provides many useful toolings to improve your learning experience. Make sure that everything in this guide is setup properly before proceeding.
-:::
-
 ## Bash
 
-:::callout{.warning}
+:::callout{.info.minimal}
 git-mastery uses [Bash](https://www.gnu.org/software/bash/) to download problem sets and perform submissions on your behalf. So it is important that you have access to it.
 :::
 
@@ -42,7 +38,7 @@ Copyright (C) 2007 Free Software Foundation, Inc.
 
 To check if you have access to Bash on your Windows machine, first, check if you have Git Bash or Windows Subsystem for Linux (WSL) installed.
 
-:::callout{.info}
+:::callout{.info.info}
 You have Git Bash from a previous installation of Git, if so, that is perfectly alright.
 :::
 
@@ -67,14 +63,15 @@ Keep your terminal open, we will be using it for the rest of the setup.
 
 ## Git
 
-:::callout{.warning}
+:::callout{.warning.minimal}
 **Take note!**
 
 You may have interacted with Git through GUIs like Github Desktop, GitKraken, and SourceTree. However, please use only the terminal for all of git-mastery. Doing so will allow you to build an intuition for how Git commands work.
 :::
 
-:::::tabs{key=git-setup}
-::::tab{key=verification header="Verification"}
+:::::steps
+::::step{title="Verification"}
+
 First, you should verify that you have Git installed already using the following command (which will display the version number of Git installed):
 
 ```bash
@@ -90,12 +87,9 @@ git version 2.48.1
 If Git is already installed, feel free to skip to the next section of [setting up Github](./learning-lab/setup#github).
 ::::
 
-::::tab{key=installation header="Installation"}
-Follow the installation steps for your [operating system (OS) here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+::::step{title="Installation"}
 
-:::callout{.info}
-If you are using Windows, use [Git Bash](https://git-scm.com/downloads) or [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) as Git Mastery only works with Bash.
-:::
+Follow the installation steps for your [operating system (OS) here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 To ensure that everything is working, run the following commands:
 
@@ -111,36 +105,20 @@ git version 2.48.1
 
 ::::
 
-::::tab{key=configuration header="Configuration"}
-Because we use Git with Github, we highly recommend that you perform the following configurations:
-
-The following command sets the name that will be associated with your Git commits. This name will be visible in any future commits pushed to Github from the command line. You can use any text if you wish to keep your real name private. For more information, refer to the [Github documentation](https://docs.github.com/en/get-started/git-basics/setting-your-username-in-git).
-
-```bash
-git config --global user.name "<your name>"
-```
-
-The next command is used to set the email to be associated with your Git commits. Similar to setting your name, if you wish to keep your real email private, you can do so using a Github-provided `noreply` email as [described here](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address#setting-your-commit-email-address-on-github).
-
-```bash
-git config --global user.email "<your email>"
-```
-
-::::
 :::::
 
 ## Github
 
-:::callout{.warning}
+:::callout{.info.minimal}
 git-mastery uses Github to validate your submissions and provide feedback on your submission. Even if you already have a Github account created, you should still verify that you have setup SSH.
 :::
 
-:::::::tabs{key=github-setup}
-::::::tab{key=account-creation header="Account creation"}
+:::::::steps
+::::::step{title="New account"}
 Create a [new Github account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) _if you don’t have an account_
 ::::::
 
-::::::tab{key=ssh-verification header="SSH verification"}
+::::::step{title="Verification"}
 Verify if you already have SSH setup for Github:
 
 ```bash
@@ -150,9 +128,9 @@ ssh -T git@github.com
 If you have already set it up, you should see a message containing your username. If so, feel free to skip to installing [Github CLI](/learning-lab/setup#github-cli).
 ::::::
 
-::::::tab{key=ssh-setup header="SSH setup"}
+::::::step{title="SSH setup"}
 
-:::::callout{.info}
+:::::callout{.info.minimal}
 The following instructions are taken from the [official Github documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
 :::::
 
@@ -176,7 +154,7 @@ Create a new SSH key:
 ssh-keygen -t ed25519 -C "your email"
 ```
 
-:::::callout{.info}
+:::::callout{.info.minimal}
 You can press **Enter** to accept all of the defaults (including using an empty passphrase).
 :::::
 
@@ -224,7 +202,7 @@ ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 
 ::::tab{key=windows header="Windows"}
 
-:::callout{.warning}
+:::callout{.warning.minimal}
 This will be the only time that you will open Powershell and run Powershell commands on Windows. For every other command, please use Bash instead.
 :::
 
@@ -289,11 +267,29 @@ Verify that the fingerprint in the message matches [Github's public key fingerpr
 
 You should see a message containing your username.
 ::::::
+
+::::::step{title="Configurations"}
+
+Because we use Git with Github, we highly recommend that you perform the following configurations:
+
+The following command sets the name that will be associated with your Git commits. This name will be visible in any future commits pushed to Github from the command line. You can use any text if you wish to keep your real name private. For more information, refer to the [Github documentation](https://docs.github.com/en/get-started/git-basics/setting-your-username-in-git).
+
+```bash
+git config --global user.name "<your name>"
+```
+
+The next command is used to set the email to be associated with your Git commits. Similar to setting your name, if you wish to keep your real email private, you can do so using a Github-provided `noreply` email as [described here](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address#setting-your-commit-email-address-on-github).
+
+```bash
+git config --global user.email "<your email>"
+```
+
+::::::
 :::::::
 
 ## Github CLI
 
-:::callout{.warning}
+:::callout{.info.minimal}
 git-mastery uses Github CLI to streamline and automate the download and submission processes.
 :::
 
@@ -305,7 +301,7 @@ After you have installed Github CLI, run the following command to login to your 
 gh auth login
 ```
 
-:::callout{.warning}
+:::callout{.warning.minimal}
 You should have setup SSH for Github from the step above. If so, you should select the option for using SSH for Github CLI.
 :::
 

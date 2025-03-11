@@ -6,8 +6,7 @@ export type Step = {
   type: string;
   name: string;
   attributes: {
-    key: string;
-    header: string;
+    title?: string | null;
   };
 };
 
@@ -72,12 +71,29 @@ const remarkSteps: Plugin<[], Root> = () => {
                       },
                     },
                     {
+                      type: "element",
                       data: {
+                        hName: "div",
                         hProperties: {
                           className: "step-data",
                         },
                       },
-                      ...step,
+                      children: [
+                        step.attributes.title == null
+                          ? {}
+                          : {
+                              type: "paragraph",
+                              data: {
+                                hProperties: {
+                                  className: "step-title",
+                                },
+                              },
+                              children: [
+                                { type: "text", value: step.attributes.title },
+                              ],
+                            },
+                        step,
+                      ],
                     },
                   ],
                 })),

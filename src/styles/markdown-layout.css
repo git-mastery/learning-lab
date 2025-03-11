@@ -5,30 +5,39 @@ div.callout {
 }
 
 div.callout.danger {
-  @apply bg-red-50 border-l-4 border-l-red-400;
+  @apply border-l-4 border-l-red-400;
 }
 
-div.callout.danger::before {
-  /* content: "🚨 DANGER"; */
-  @apply inline-block font-bold text-lg mb-2 uppercase;
+div.callout.danger:not(.minimal) {
+  @apply bg-red-50;
+}
+
+div.callout.danger.minimal {
+  @apply rounded-none;
 }
 
 div.callout.warning {
-  @apply bg-yellow-50 border-l-4 border-l-yellow-400;
+  @apply border-l-4 border-l-yellow-400;
 }
 
-div.callout.warning::before {
-  /* content: "⚠️ Warning"; */
-  @apply inline-block font-bold text-lg mb-2 uppercase;
+div.callout.warning:not(.minimal) {
+  @apply bg-yellow-50;
+}
+
+div.callout.warning.minimal {
+  @apply rounded-none;
 }
 
 div.callout.info {
-  @apply bg-blue-50 border-l-4 border-l-blue-400;
+  @apply border-l-4 border-l-blue-400;
 }
 
-div.callout.info::before {
-  /* content: "ℹ Information"; */
-  @apply inline-block font-bold text-lg mb-2 uppercase;
+div.callout.info:not(.minimal) {
+  @apply bg-blue-50;
+}
+
+div.callout.info.minimal {
+  @apply rounded-none;
 }
 
 pre {
@@ -76,7 +85,7 @@ div.tabs div.tab.active {
 }
 
 div.steps div.steps-content {
-  @apply flex flex-col gap-2;
+  @apply flex flex-col gap-6;
 }
 
 div.steps div.steps-content div.step {
@@ -93,4 +102,8 @@ div.steps div.steps-content div.step div.divider {
 
 div.steps div.steps-content div.step div.step-data {
   @apply w-full;
+}
+
+div.steps div.steps-content div.step div.step-data p.step-title {
+  @apply font-bold;
 }
