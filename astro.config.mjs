@@ -11,6 +11,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import remarkDirective from "remark-directive";
 import rehypeTabs from "./src/plugins/rehype-tabs";
 import remarkCallout from "./src/plugins/remark-callout";
+import remarkSteps from "./src/plugins/remark-steps";
 import remarkTabs from "./src/plugins/remark-tabs";
 
 export default defineConfig({
@@ -18,7 +19,7 @@ export default defineConfig({
   base: "/learning-lab",
   markdown: {
     syntaxHighlight: false,
-    remarkPlugins: [remarkDirective, remarkCallout, remarkTabs],
+    remarkPlugins: [remarkDirective, remarkCallout, remarkTabs, remarkSteps],
     rehypePlugins: [
       rehypeHeadingIds,
       rehypeTabs,
