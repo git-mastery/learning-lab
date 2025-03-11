@@ -38,7 +38,7 @@ Copyright (C) 2007 Free Software Foundation, Inc.
 
 To check if you have access to Bash on your Windows machine, first, check if you have Git Bash or Windows Subsystem for Linux (WSL) installed.
 
-:::callout{.info.info}
+:::callout{.info.minimal}
 You have Git Bash from a previous installation of Git, if so, that is perfectly alright.
 :::
 
