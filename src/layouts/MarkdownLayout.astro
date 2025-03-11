@@ -48,13 +48,10 @@ const availableProblemSets = problemSets.filter(
                   <thead>
                     <tr>
                       <th class="bg-gray-200 border border-gray-300 px-4 py-2 text-left">
-                        Problem name
+                        Problem set
                       </th>
                       <th class="bg-gray-200 border border-gray-300 px-4 py-2 text-left">
-                        Details
-                      </th>
-                      <th class="bg-gray-200 border border-gray-300 px-4 py-2 text-left">
-                        Attempts
+                        Download
                       </th>
                     </tr>
                   </thead>
@@ -67,18 +64,15 @@ const availableProblemSets = problemSets.filter(
                       }) => (
                         <tr>
                           <td class="border border-gray-300 px-4 py-2 text-left">
-                            {problemSet.name}
-                          </td>
-                          <td class="border border-gray-300 px-4 py-2 text-left">
                             <a
                               target="_blank"
                               href={problemSet.html_url}
                             >
-                              Link
+                              {problemSet.name}
                             </a>
                           </td>
                           <td class="border border-gray-300 px-4 py-2 text-left">
-                            {problemSet.forks}
+                            <code>bash download.sh {problemSet.name}</code>
                           </td>
                         </tr>
                       ),
