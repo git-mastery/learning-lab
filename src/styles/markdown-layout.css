@@ -84,6 +84,10 @@ div.tabs div.tab.active {
   @apply block;
 }
 
+div.steps {
+  @apply mb-4;
+}
+
 div.steps div.steps-content {
   @apply flex flex-col gap-6;
 }
