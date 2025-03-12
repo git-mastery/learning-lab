@@ -121,7 +121,7 @@ div.exercises div.exercise-bar p.exercise-title {
 }
 
 div.exercises div.exercise {
-  @apply rounded-md border-1 border-neutral-300;
+  @apply rounded-md border-1 border-neutral-300 ml-6;
 }
 
 div.exercises div.exercise div.exercise-metadata {
@@ -145,4 +145,8 @@ div.exercises div.exercise div.exercise-content {
 
 div.exercises div.exercise div.exercise-description {
   @apply mt-2 pt-2 border-t-1 border-t-neutral-200;
+}
+
+img {
+  @apply my-4;
 }

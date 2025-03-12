@@ -39,7 +39,7 @@ const remarkExercises: Plugin<[], Root> = () => {
             {
               className: "exercise-bar",
             },
-            mdParagraph(`Exercise${exercises.length > 1 ? "s" : ""}`, {
+            mdParagraph(`✏️ Exercise${exercises.length > 1 ? "s" : ""}`, {
               className: "exercise-title",
             }),
           ),
@@ -81,12 +81,6 @@ const remarkExercises: Plugin<[], Root> = () => {
                   : {},
               ),
             ),
-          ),
-        );
-        console.log(
-          mdLink(
-            "More details about exercise",
-            `https://github.com/git-mastery/grocery-shopping`,
           ),
         );
         parent.children[index] = wrapper;

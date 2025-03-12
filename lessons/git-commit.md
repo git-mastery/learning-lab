@@ -21,11 +21,11 @@ You can think of a commit as a _snapshot_ of the instance of the codebase at a g
 
 Internally, Git tracks these commits by creating an [Directed Acyclic Graph (DAG)](https://en.wikipedia.org/wiki/Directed_acyclic_graph), with every commit representing a node in the graph and every edge points back to the previous commit that occurred.
 
-<div style="text-align: center;"><img src="commit.png" width="400px" alt=""></div>
+<div style="text-align: center; display: flex; justify-content: center;"><img src="learning-lab/images/lessons/git-commit/commit.png" width="400px" alt=""></div>
 
 You may notice that each commit node may have more than one incoming edge. This is where the idea of **branching** stems from.
 
-:::callout{.warning}
+:::callout{.warning.minimal}
 We will be discussing branching in a later lesson.
 :::
 
@@ -35,7 +35,7 @@ By default, Git does not know what files it should be including in a snapshot (a
 
 This is where the "three areas" concept comes into play. It is often good to think of your projects with Git as three separate concepts:
 
-<div style="text-align: center;"><img src="staging.png" alt="" width="500px"></div>
+<div style="text-align: center; display: flex; justify-content: center;"><img src="learning-lab/images/lessons/git-commit/staging.png" alt="" width="500px"></div>
 
 1. Working directory: where your codebase actually resides
 2. Staging area: set of files that you want to include in a snapshot
@@ -43,7 +43,7 @@ This is where the "three areas" concept comes into play. It is often good to thi
 
 By default, all of your files reside in the working directory and are not yet added to the staging area. If you want a file included in the staging area, then you must first add it to the staging area (we will cover how this happens later on).
 
-:::callout{.info}
+:::callout{.info.minimal}
 There are also ways to remove files from the staging area!
 :::
 
@@ -59,11 +59,16 @@ Create a new file in the folder and add some text to it.
 echo 'Hello world' >> hello.txt
 ```
 
-:::callout{.info}
+:::callout{.info.minimal}
 The command above essentially redirects the output of the `echo` (Hello world) into a new file `hello.txt`
 :::
 
 If you don't want to use bash commands, you can just create the file using your preferred method as well.
+
+::::exercises
+:::exercise{name="grocery-shopping" recommendation="Must do"}
+:::
+::::
 
 ### Getting the status of a repository
 
@@ -89,7 +94,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 Recall that in [Adding files to a snapshot](./#adding-files-to-a-snapshot "mention"), Git does not automatically add files to a snapshot as it does not know exactly what you want. So we want to tell Git that we want `hello.txt` in the snapshot.
 
-:::callout{.info}
+:::callout{.info.minimal}
 `git status` is to view the state of your repository in Git's eyes. Use it to view things like the current files in the snapshot.
 
 You may find exercises for it [here](https://github.com/git-mastery/problems-directory?tab=readme-ov-file#git-status).
@@ -107,7 +112,7 @@ As discussed in [What is a commit](./#what-is-a-commit "mention"), a file from t
 
 To add `hello.txt` to the staging area, use the following command:
 
-:::callout{.warning}
+:::callout{.warning.minimal}
 We will be covering what `git add` does in a later lesson.
 :::
 
@@ -143,6 +148,6 @@ git commit -m "First commit"
 
 The `-m` flag is used to specify the commit message. Every commit has an accompanying message that you can use to indicate what the commit contains/entails.
 
-:::callout{.info}
+:::callout{.info.minimal}
 If you do not use `-m`, your favorite terminal/GUI editor will be launched and you can compose the commit message in that editor, save it, and close the editor
 :::
