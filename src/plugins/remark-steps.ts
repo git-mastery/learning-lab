@@ -18,7 +18,6 @@ const remarkSteps: Plugin<[], Root> = () => {
           (child: { type: string; name: string }) =>
             child.type === "containerDirective" && child.name === "step",
         );
-        console.log(steps);
         // We need to construct the necessary UI components for the tabs
         const wrapper = {
           type: "element",
@@ -92,7 +91,14 @@ const remarkSteps: Plugin<[], Root> = () => {
                                 { type: "text", value: step.attributes.title },
                               ],
                             },
-                        step,
+                        {
+                          data: {
+                            hProperties: {
+                              className: "step-data-content",
+                            },
+                          },
+                          ...step,
+                        },
                       ],
                     },
                   ],
