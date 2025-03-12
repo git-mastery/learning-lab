@@ -1,6 +1,7 @@
 import type { Root } from "mdast";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
+import { mdElement } from "../utils/md";
 
 export type Tab = {
   type: string;
@@ -19,57 +20,42 @@ const remarkTabs: Plugin<[], Root> = () => {
           (child: { type: string; name: string }) =>
             child.type === "containerDirective" && child.name === "tab",
         );
-        // We need to construct the necessary UI components for the tabs
-        const wrapper = {
-          type: "element",
-          data: {
-            hName: "div",
-            hProperties: {
-              className: "tabs",
-              "data-tabs-key": node.attributes?.["key"] ?? "",
-              "data-tabs": JSON.stringify(
-                tabs.map((tab: Tab) => tab.attributes.key),
-              ),
-            },
+        const wrapper = mdElement(
+          "div",
+          {
+            className: "tabs",
+            "data-tabs-key": node.attributes?.["key"] ?? "",
+            "data-tabs": JSON.stringify(
+              tabs.map((tab: Tab) => tab.attributes.key),
+            ),
           },
-          children: [
+          mdElement(
+            "div",
             {
-              type: "element",
-              data: {
-                hName: "div",
-                hProperties: {
-                  className: "selector",
-                },
-              },
-              children: tabs.map((tab: Tab) => ({
-                type: "element",
-                data: {
-                  hName: "div",
-                  hProperties: {
-                    "data-tab-selector-key": tab.attributes.key,
-                    "data-tabs-key": node.attributes?.["key"] ?? "",
-                  },
-                },
-                children: [
-                  {
-                    type: "text",
-                    value: tab.attributes.header,
-                  },
-                ],
-              })),
+              className: "selector",
             },
+            ...tabs.map((tab: Tab) =>
+              mdElement(
+                "div",
+                {
+                  "data-tab-selector-key": tab.attributes.key,
+                  "data-tabs-key": node.attributes?.["key"] ?? "",
+                },
+                {
+                  type: "text",
+                  value: tab.attributes.header,
+                },
+              ),
+            ),
+          ),
+          mdElement(
+            "div",
             {
-              type: "element",
-              data: {
-                hName: "div",
-                hProperties: {
-                  className: "tabs-content",
-                },
-              },
-              children: [...tabs],
+              className: "tabs-content",
             },
-          ],
-        };
+            ...tabs,
+          ),
+        );
         parent.children[index] = wrapper;
       } else if (node.type === "containerDirective" && node.name === "tab") {
         // We need to attach some properties to the tab containers
