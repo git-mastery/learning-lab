@@ -24,7 +24,10 @@ export function mdText(text: any) {
   };
 }
 
-export function mdParagraph(text: any, properties: { [key: string]: any }) {
+export function mdParagraph(
+  text: any,
+  properties: { [key: string]: any } = {},
+) {
   return {
     type: "paragraph",
     data: {
@@ -43,5 +46,49 @@ export function mdEditElement(
       hProperties: properties,
     },
     ...element,
+  };
+}
+
+export function mdInlineCode(
+  text: any,
+  properties: { [key: string]: any } = {},
+) {
+  return {
+    type: "inlineCode",
+    value: text,
+    data: {
+      hProperties: properties,
+    },
+  };
+}
+
+export function mdCode(
+  text: any,
+  lang?: string | null,
+  properties: { [key: string]: any } = {},
+) {
+  return {
+    type: "code",
+    value: text,
+    lang,
+    data: {
+      hProperties: properties,
+    },
+  };
+}
+
+export function mdLink(
+  text: any,
+  url: string,
+  properties: { [key: string]: any } = {},
+) {
+  return {
+    type: "link",
+    url,
+    title: text,
+    data: {
+      hProperties: properties,
+    },
+    children: [mdText(text)],
   };
 }

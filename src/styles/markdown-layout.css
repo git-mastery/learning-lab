@@ -111,3 +111,38 @@ div.steps div.steps-content div.step div.step-data p.step-title {
 div.steps div.steps-content div.step div.step-data div.step-data-content {
   @apply w-full;
 }
+
+div.exercises {
+  @apply my-4;
+}
+
+div.exercises div.exercise-bar p.exercise-title {
+  @apply font-bold text-lg;
+}
+
+div.exercises div.exercise {
+  @apply rounded-md border-1 border-neutral-300;
+}
+
+div.exercises div.exercise div.exercise-metadata {
+  @apply flex flex-row justify-between items-center mb-2 px-4 py-2 border-b-1 border-b-neutral-200;
+}
+div.exercises div.exercise div.exercise-metadata code.exercise-name {
+  @apply mb-0 font-bold;
+}
+
+div.exercises div.exercise div.exercise-metadata p.exercise-recommendation {
+  @apply text-xs text-blue-500 mb-0 p-1 border-1 border-blue-500 rounded-md;
+}
+
+div.exercises div.exercise:not(:last-child) {
+  @apply mb-4;
+}
+
+div.exercises div.exercise div.exercise-content {
+  @apply px-4 py-2;
+}
+
+div.exercises div.exercise div.exercise-description {
+  @apply mt-2 pt-2 border-t-1 border-t-neutral-200;
+}
