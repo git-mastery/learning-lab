@@ -1,6 +1,7 @@
 import type { Root } from "mdast";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
+import { mdEditElement, mdElement, mdParagraph } from "../utils/md";
 
 export type Step = {
   type: string;
@@ -18,95 +19,47 @@ const remarkSteps: Plugin<[], Root> = () => {
           (child: { type: string; name: string }) =>
             child.type === "containerDirective" && child.name === "step",
         );
-        // We need to construct the necessary UI components for the tabs
-        const wrapper = {
-          type: "element",
-          data: {
-            hName: "div",
-            hProperties: {
-              className: "steps",
-            },
+        const wrapper = mdElement(
+          "div",
+          {
+            className: "steps",
           },
-          children: [
+          mdElement(
+            "div",
             {
-              type: "element",
-              data: {
-                hName: "div",
-                hProperties: {
-                  className: "steps-content",
-                },
-              },
-              children: [
-                ...steps.map((step: Step, i: number) => ({
-                  type: "element",
-                  data: {
-                    hName: "div",
-                    hProperties: {
-                      className: "step",
-                      "data-index": i,
-                    },
-                  },
-                  children: [
-                    {
-                      type: "paragraph",
-                      data: {
-                        hProperties: {
-                          className: "step-number",
-                        },
-                      },
-                      children: [
-                        {
-                          type: "text",
-                          value: i + 1,
-                        },
-                      ],
-                    },
-                    {
-                      type: "element",
-                      data: {
-                        hProperties: {
-                          className: "divider",
-                        },
-                      },
-                    },
-                    {
-                      type: "element",
-                      data: {
-                        hName: "div",
-                        hProperties: {
-                          className: "step-data",
-                        },
-                      },
-                      children: [
-                        step.attributes.title == null
-                          ? {}
-                          : {
-                              type: "paragraph",
-                              data: {
-                                hProperties: {
-                                  className: "step-title",
-                                },
-                              },
-                              children: [
-                                { type: "text", value: step.attributes.title },
-                              ],
-                            },
-                        {
-                          data: {
-                            hProperties: {
-                              className: "step-data-content",
-                            },
-                          },
-                          ...step,
-                        },
-                      ],
-                    },
-                  ],
-                })),
-              ],
+              className: "steps-content",
             },
-          ],
-        };
+            ...steps.map((step: Step, i: number) =>
+              mdElement(
+                "div",
+                {
+                  className: "step",
+                  "data-index": i,
+                },
+                mdParagraph(i + 1, {
+                  className: "step-number",
+                }),
+                mdElement("div", {
+                  className: "divider",
+                }),
+                mdElement(
+                  "div",
+                  {
+                    className: "step-data",
+                  },
+                  step.attributes.title == null
+                    ? {}
+                    : mdParagraph(step.attributes.title, {
+                        className: "step-title",
+                      }),
+                  mdEditElement(step, {
+                    className: "step-data-content",
+                  }),
+                ),
+              ),
+            ),
+          ),
+        );
         parent.children[index] = wrapper;
       }
     });

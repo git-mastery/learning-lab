@@ -1,7 +1,7 @@
 import type { Root } from "mdast";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
-import { mdElement } from "../utils/md";
+import { mdElement, mdText } from "../utils/md";
 
 export type Tab = {
   type: string;
@@ -41,10 +41,7 @@ const remarkTabs: Plugin<[], Root> = () => {
                   "data-tab-selector-key": tab.attributes.key,
                   "data-tabs-key": node.attributes?.["key"] ?? "",
                 },
-                {
-                  type: "text",
-                  value: tab.attributes.header,
-                },
+                mdText(tab.attributes.header),
               ),
             ),
           ),
