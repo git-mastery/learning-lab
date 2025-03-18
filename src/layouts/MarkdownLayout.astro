@@ -4,14 +4,29 @@ import "../styles/markdown-layout.css";
 import { createLocalPath, attachHeading } from "../utils/link";
 import BaseLayout from "./BaseLayout.astro";
 import { RiExternalLinkLine } from "react-icons/ri";
+import { getEntry } from "astro:content";
 
 const { frontmatter, headings } = Astro.props;
 
 const title = frontmatter?.title;
-const prev = frontmatter?.prev;
-const next = frontmatter?.next;
+const prevPath = frontmatter?.prev?.path?.split("/") ?? [];
+const nextPath = frontmatter?.next?.path?.split("/") ?? [];
 const categories = frontmatter?.categories ?? [];
-const hasNavigation = prev != null || next != null;
+const hasNavigation = prevPath.length > 0 || nextPath.length > 0;
+const prev =
+  prevPath[0] === "tours" && prevPath.length > 1
+    ? {
+        path: prevPath.join("/"),
+        name: (await getEntry("tours", prevPath.slice(1).join("/"))).data.title,
+      }
+    : { path: prevPath.join("/"), name: frontmatter?.prev?.name };
+const next =
+  nextPath[0] === "tours" && nextPath.length > 1
+    ? {
+        path: nextPath.join("/"),
+        name: (await getEntry("tours", nextPath.slice(1).join("/"))).data.title,
+      }
+    : { path: nextPath.join("/"), name: frontmatter?.next?.name };
 
 const problemSetsResponse = await fetch(
   "https://raw.githubusercontent.com/git-mastery/problems-directory/refs/heads/main/problems.json",
@@ -96,7 +111,7 @@ const availableProblemSets = problemSets.filter(
         {
           hasNavigation && (
             <div class="mt-4 pt-4 flex md:flex-row flex-col gap-4 justify-between border-t-1 border-t-neutral-200">
-              {prev != null && (
+              {prevPath.length !== 0 && prev != null && (
                 <a
                   href={createLocalPath(prev?.path)}
                   class="hover:shadow-md transition duration-300 inline-block text-left w-full px-4 py-2 border-1 border-neutral-300 rounded-md !no-underline"
@@ -105,7 +120,7 @@ const availableProblemSets = problemSets.filter(
                   <span>← {prev.name}</span>
                 </a>
               )}
-              {next != null && (
+              {nextPath.length !== 0 && next != null && (
                 <a
                   href={createLocalPath(next?.path)}
                   class="hover:shadow-md transition duration-300 inline-block text-right w-full px-4 py-2 border-1 border-neutral-300 rounded-md !no-underline"
