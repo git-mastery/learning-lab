@@ -36,13 +36,11 @@ const tours = defineCollection({
     next: z
       .object({
         path: z.string(),
-        name: z.string(),
       })
       .optional(),
     prev: z
       .object({
         path: z.string(),
-        name: z.string(),
       })
       .optional(),
   }),
