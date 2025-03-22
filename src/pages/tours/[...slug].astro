@@ -6,7 +6,7 @@ import { getEntry } from "astro:content";
 import { render } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("lessons", (p) => !p.data.draft);
+  const posts = await getCollection("tours", (p) => !p.data.draft);
 
   return posts.map((post) => ({
     params: { slug: post.id },
@@ -14,8 +14,7 @@ export async function getStaticPaths() {
   }));
 }
 
-console.log("slug", Astro.params.slug);
-const lesson = await getEntry("lessons", Astro.params.slug);
+const lesson = await getEntry("tours", Astro.params.slug);
 const { Content, headings } = await render(lesson);
 ---
 

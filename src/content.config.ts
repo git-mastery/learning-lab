@@ -1,9 +1,9 @@
 import { defineCollection, z } from "astro:content";
 
-import { glob, file } from "astro/loaders";
+import { glob } from "astro/loaders";
 
-const lessons = defineCollection({
-  loader: glob({ pattern: ["**/*.md", "**/*.mdx"], base: "./lessons" }),
+const tours = defineCollection({
+  loader: glob({ pattern: ["**/*.md", "**/*.mdx"], base: "./tours" }),
   schema: z.object({
     title: z.string(),
     draft: z.boolean().optional().default(false),
@@ -13,16 +13,16 @@ const lessons = defineCollection({
     next: z
       .object({
         path: z.string(),
-        name: z.string(),
+        name: z.string().optional(),
       })
       .optional(),
     prev: z
       .object({
         path: z.string(),
-        name: z.string(),
+        name: z.string().optional(),
       })
       .optional(),
   }),
 });
 
-export const collections = { lessons };
+export const collections = { tours };

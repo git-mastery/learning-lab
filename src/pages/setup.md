@@ -5,8 +5,8 @@ prev:
   path: .
   name: Home
 next:
-  path: lessons
-  name: Lessons
+  path: tours
+  name: Tours
 ---
 
 ## bash
