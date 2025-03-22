@@ -4,6 +4,9 @@ description: The differences between the types of repositories in Git
 order: 1
 prev:
   path: tours/introduction/origins-of-git
+next:
+  path: tours
+  name: Back to tours
 ---
 
 ## What are repositories?
