@@ -3,7 +3,7 @@ title: Commits
 description: "Diving into the most fundamental concept of Git: commits!"
 categories:
   - git-commit
-draft: false
+draft: true
 prev:
   path: /lessons/introduction
   name: Introduction
