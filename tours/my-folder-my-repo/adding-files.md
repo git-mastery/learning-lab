@@ -65,6 +65,8 @@ echo "Hello world!" >> hello_world.txt
 
 Repeat steps (1) and (2) a few more times with different file names and different file contents!
 
+In fact, try creating multiple sub-directories and nest files in them!
+
 Be as creative as possible!
 
 :::
