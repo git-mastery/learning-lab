@@ -16,6 +16,18 @@ div.callout.danger.minimal {
   @apply rounded-none;
 }
 
+div.callout.note {
+  @apply border-l-4 border-l-neutral-400;
+}
+
+div.callout.note:not(.minimal) {
+  @apply bg-neutral-50;
+}
+
+div.callout.note.minimal {
+  @apply rounded-none;
+}
+
 div.callout.warning {
   @apply border-l-4 border-l-yellow-400;
 }
@@ -149,6 +161,18 @@ div.exercises div.exercise div.exercise-content {
 
 div.exercises div.exercise div.exercise-description {
   @apply mt-2 pt-2 border-t-1 border-t-neutral-200;
+}
+
+div.hands-on {
+  @apply my-4;
+}
+
+div.hands-on div.hands-on-bar p.hands-on-title {
+  @apply font-bold text-lg;
+}
+
+div.hands-on div.hands-on-content {
+  @apply rounded-md border-1 border-neutral-300 ml-6 pt-2 px-4;
 }
 
 img {
