@@ -178,3 +178,17 @@ div.hands-on div.hands-on-content {
 img {
   @apply my-4;
 }
+
+blockquote {
+  @apply relative z-50;
+}
+
+blockquote::before {
+  content: '"';
+  @apply font-bold text-2xl text-neutral-500;
+}
+
+blockquote::after {
+  content: '"';
+  @apply font-bold text-2xl text-neutral-500 block text-right;
+}
