@@ -14,6 +14,7 @@ import remarkCallout from "./src/plugins/remark-callout";
 import remarkSteps from "./src/plugins/remark-steps";
 import remarkTabs from "./src/plugins/remark-tabs";
 import remarkExercises from "./src/plugins/remark-exercises";
+import remarkHandsOn from "./src/plugins/remark-hands-on";
 
 export default defineConfig({
   site: "https://git-mastery.github.io",
@@ -26,6 +27,7 @@ export default defineConfig({
       remarkTabs,
       remarkSteps,
       remarkExercises,
+      remarkHandsOn,
     ],
     rehypePlugins: [
       rehypeHeadingIds,
