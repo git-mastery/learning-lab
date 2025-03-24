@@ -2,6 +2,8 @@
 title: Viewing repository status
 description: How does Git (and I) know what's happening in my repository?
 order: 2
+categories:
+  - git-status
 prev:
   path: tours/my-folder-my-repo/adding-files
 next:
@@ -59,5 +61,9 @@ The most important thing to note is that you should see the files you added from
 Let's break down the text you get when you run `git status`:
 
 ![`git status` anatomy](/learning-lab/images/tours/my-folder-my-repo/git-status-anatomy.jpg)
+
+:::callout{.note}
+Files that are "untracked" are simply files that Git has never seen before in the local repository (i.e. it has no history where the file has existed), so it treats it as an untracked file.
+:::
 
 This is the most basic form of `git status` that you will see because we have no other changes made to the local repository. As we explore using Git in local repositories, we will discuss other parts of `git status`.

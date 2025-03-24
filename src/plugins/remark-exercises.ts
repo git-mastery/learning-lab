@@ -71,7 +71,7 @@ const remarkExercises: Plugin<[], Root> = () => {
                   "bash",
                 ),
                 mdLink(
-                  "More details about exercise",
+                  "More details about problem set",
                   `https://github.com/git-mastery/${exercise.attributes.name ?? ""}`,
                 ),
                 exercise.children.length > 0
