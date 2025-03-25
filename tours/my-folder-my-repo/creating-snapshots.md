@@ -124,7 +124,7 @@ You will enter the commit message in the very first line. The commit message des
 
 <!--TODO: This should be about commit message etiquette-->
 
-:::callout{.note}
+:::detour{.wip}
 The commit message has two components, the commit title and the commit description.
 
 Most of the time, the commit title is sufficient for most commits, but you may want to include more details about the commit, so you may utilize the commit description.
@@ -166,6 +166,6 @@ The files you had added should no longer be present in the list of untracked fil
 
 <!--TODO: This should be about git log-->
 
-:::callout{.note}
+:::detour{.wip}
 You might be wondering how you can view the past commits of your local repository. We will be covering it in a subsequent detour!
 :::

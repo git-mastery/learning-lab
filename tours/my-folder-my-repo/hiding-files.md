@@ -1,7 +1,7 @@
 ---
 title: Hiding files from Git
 description: What do you have to hide? 👀
-order: 4
+order: 5
 prev:
   path: tours/my-folder-my-repo/creating-snapshots
 next:
