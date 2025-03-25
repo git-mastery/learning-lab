@@ -4,7 +4,6 @@ import { visit } from "unist-util-visit";
 import { mdElement, mdParagraph } from "../utils/md";
 
 const remarkHandsOn: Plugin<[], Root> = () => {
-  console.log("hi");
   return (tree) => {
     visit(tree, (node: any, index: number, parent: any) => {
       if (node.type === "containerDirective" && node.name === "handsOn") {
