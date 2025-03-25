@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+div.detour {
+  @apply my-4;
+}
+
+div.detour div.detour-bar p.detour-title {
+  @apply font-bold text-lg;
+}
+
+div.detour div.detour-content {
+  @apply rounded-md border-1 border-neutral-300 ml-6 pt-2 px-4;
+}
+
+div.detour div.detour-content p.detour-wip {
+  @apply text-center py-2 mt-4 bg-yellow-50 border-1 border-yellow-200 rounded-md;
+}
+
+div.detour div.detour-content a.detour-link {
+  @apply inline-block text-center font-bold w-full no-underline mb-2 mt-2 py-2 bg-neutral-50 border-1 border-neutral-100 rounded-md;
+}

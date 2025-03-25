@@ -39,7 +39,7 @@ const remarkExercises: Plugin<[], Root> = () => {
             {
               className: "exercise-bar",
             },
-            mdParagraph(`✏️ Exercise${exercises.length > 1 ? "s" : ""}`, {
+            mdParagraph(`✏️ Problem set${exercises.length > 1 ? "s" : ""}`, {
               className: "exercise-title",
             }),
           ),
@@ -71,7 +71,7 @@ const remarkExercises: Plugin<[], Root> = () => {
                   "bash",
                 ),
                 mdLink(
-                  "More details about exercise",
+                  "More details about problem set",
                   `https://github.com/git-mastery/${exercise.attributes.name ?? ""}`,
                 ),
                 exercise.children.length > 0

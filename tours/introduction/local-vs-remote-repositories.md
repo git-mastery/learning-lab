@@ -36,5 +36,5 @@ This is where remote repositories shine - being able to synchronize and coordina
 [Github](https://github.com) is an example of a hosted remote Git server where you can create remote repositories and work on them locally (while pushing changes remotely, hence the "decentralized" nature of Git).
 
 :::callout{.info}
-We will discuss how to work with remote Git repositories in upcoming tour.
+We will discuss how to work with remote Git repositories in an upcoming tour.
 :::
