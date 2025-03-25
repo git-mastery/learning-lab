@@ -126,6 +126,8 @@ Untracked files:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
+Finally, create another snapshot of the deletion! (Try doing it yourself with what we've done before!)
+
 :::
 
 ## Different `git status`
