@@ -80,7 +80,7 @@ git init
 Verify that the project folder has the `.git/` folder:
 
 ```bash
-[ -d .git ] && echo "Project is a local Git repository!" || echo "Project is not a local Git repository..."
+[ -d .git ] && echo 'Project is a local Git repository!' || echo 'Project is not a local Git repository...'
 ```
 
 You should see the message:

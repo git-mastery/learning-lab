@@ -7,7 +7,7 @@ categories:
 prev:
   path: tours/my-folder-my-repo/viewing-status
 next:
-  path: tours/my-folder-my-repo/hiding-files
+  path: tours/my-folder-my-repo/editing-files
 ---
 
 You now have understood the very fundamentals of Git and how to add files to a local repository, but how do you start tracking the version history of your project? This is where commits come in.
@@ -169,16 +169,3 @@ The files you had added should no longer be present in the list of untracked fil
 :::callout{.note}
 You might be wondering how you can view the past commits of your local repository. We will be covering it in a subsequent detour!
 :::
-
-:::::exercises
-::::exercise{name="grocery-shopping" recommendation="Must do"}
-:::callout{.note}
-Problem sets are real-world scenarios that you can download to your local machine and experiment with them! Once you are done, run the submission script provided in the problem set (via `bash submit.sh`) and get feedback on how you've done!
-
-If you haven't setup git-mastery yet, refer to the [setup guide](/learning-lab/setup)!
-:::
-
-Test out your understanding of making commits in Git with the `grocery-shopping` problem set where you are tasked to update a grocery list for shopping!
-
-::::
-:::::
