@@ -128,7 +128,6 @@ Similar to what we've been doing every hands-on in this tour, create a snapshot 
 ::::
 
 :::::
-
 ::::::
 
 :::detour{.wip}
@@ -140,6 +139,11 @@ Or how about ignoring files that might follow a given pattern?
 
 We will discuss these nuances in a detour!
 :::
+
+::::exercises
+:::exercise{name="nothing-to-hide" recommendation="Good to try"}
+Test your understanding of basic `.gitignore` syntax!
+::::
 
 ## Rounding out the tour
 
