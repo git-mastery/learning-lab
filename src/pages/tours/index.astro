@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { tours } from "../../tour-routing";
+import Modal from "../../components/Modal.astro";
 
 const posts = await getCollection("tours", (post) => !post.data.draft);
 const sortedTours = Object.groupBy(posts, ({ id }) => id.split("/").at(0));
@@ -21,7 +22,36 @@ Object.values(sortedTours).forEach((v) =>
 
 <BaseLayout title="Tours">
   <div class="lg:w-[80%] w-[90%] mx-auto my-12">
-    <h1>Tours</h1>
+    <div class="flex flex-row justify-between items-center">
+      <h1 class="!m-0">Tours</h1>
+      <Modal
+        buttonClass="bg-neutral-100 border-neutral-100 transition text-sm uppercase duration-300 hover:shadow-md"
+        buttonText="Usage guide"
+        modalTitle="Tours usage guide"
+        modalId="tour-usage-guide"
+      >
+        <p>Familiarize yourself with these common elements in tours to ensure that you make the most of them!</p>
+        <p class="text-lg font-bold uppercase">Callouts</p>
+        <p>Callouts call attention to certain pieces of information, check them out for more details about something discussed in the lesson.</p>
+        <img class="border-1 border-neutral-200 rounded-md px-4 py-2" src="/learning-lab/images/tours/callout.png" />
+
+        <p class="text-lg font-bold uppercase mt-4">Detours</p>
+        <p>Detours are additional pieces of content that elaborate on a given content. Feel free to jump between the main lesson and detours at your own time!</p>
+        <img class="border-1 border-neutral-200 rounded-md px-4 py-2" src="/learning-lab/images/tours/detour.png" />
+
+        <p class="text-lg font-bold uppercase mt-4">Hands-on Practice</p>
+        <p>Hands-on practice are localized examples that are designed to be followed along as you go through each tour! Open up your terminal and try them!</p>
+        <img class="border-1 border-neutral-200 rounded-md px-4 py-2" src="/learning-lab/images/tours/hands-on.png" />
+
+        <p class="text-lg font-bold uppercase mt-4">Problem sets</p>
+        <p>These are hand selected problem sets that are particularly relevant to the lesson. Make sure you have <a href="/learning-lab/setup">setup git-mastery</a> and try them out!</p>
+        <img class="border-1 border-neutral-200 rounded-md px-4 py-2" src="/learning-lab/images/tours/problem-set.png" />
+
+        <p class="text-lg font-bold uppercase mt-4">Practice problem set list</p>
+        <p>These are the general problem sets that have the same category as the current lesson! Make sure you have <a href="/learning-lab/setup">setup git-mastery</a> and try them out!</p>
+        <img class="border-1 border-neutral-200 rounded-md px-4 py-2" src="/learning-lab/images/tours/practice-problem-sets.png" />
+      </Modal>
+    </div>
     <p class="italic text-neutral-400 my-4">
       We have carefully curated a set of tours that you can follow to achieve
       some learning outcomes! Check them out below!
@@ -29,11 +59,22 @@ Object.values(sortedTours).forEach((v) =>
     {
       tours.map((tour, i) => (
         <div class="flex flex-col gap-1 not-last:mb-4">
-          <h2 class="!mb-0">
-            {tour.path === "detours"
-              ? "Detours"
-              : `Tour ${i + 1}: ${tour.title}`}
-          </h2>
+          <div class="flex flex-row justify-between items-center">
+            <h2 class="!mb-0">
+              {tour.path === "detours"
+                ? "Detours"
+                : `Tour ${i + 1}: ${tour.title}`}
+            </h2>
+            <div class="flex flex-row gap-8">
+              <!-- <Modal -->
+              <!--   buttonClass="" -->
+              <!--   buttonText="Prerequisites" -->
+              <!--   modalTitle={`Prerequisites for ${tour.title}`} -->
+              <!--   modalId={`tour-${i}`} -->
+              <!-- /> -->
+              <!-- <button type="button">Start tour &#8658;</button> -->
+            </div>
+          </div>
           <p class="italic text-neutral-400 !mb-0">{tour.description}</p>
           {tour.goal != null && (
             <div class="flex flex-row gap-2 items-center mb-2">
