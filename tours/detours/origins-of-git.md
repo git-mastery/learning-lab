@@ -2,9 +2,10 @@
 title: Origins of Git
 description: Where did Git come from and why do we even need it?
 order: 0
-draft: true
+draft: false
 next:
-  path: tours/introduction/local-vs-remote-repositories
+  path: tours
+  name: Back to tours
 ---
 
 ## The need for version control

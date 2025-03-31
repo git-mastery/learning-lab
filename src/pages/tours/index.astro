@@ -1,9 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { createPath, createLocalPath } from "../../utils/link";
 import { tours } from "../../tour-routing";
-import { actions } from "astro:actions";
 
 const posts = await getCollection("tours", (post) => !post.data.draft);
 const sortedTours = Object.groupBy(posts, ({ id }) => id.split("/").at(0));
@@ -31,23 +29,29 @@ Object.values(sortedTours).forEach((v) =>
     {
       tours.map((tour, i) => (
         <div class="flex flex-col gap-1 not-last:mb-4">
-          <h2 class="!mb-0">{tour.title}</h2>
+          <h2 class="!mb-0">
+            {tour.path === "detours"
+              ? "Detours"
+              : `Tour ${i + 1}: ${tour.title}`}
+          </h2>
           <p class="italic text-neutral-400 !mb-0">{tour.description}</p>
-          <div class="flex flex-row gap-2 items-center mb-2">
-            <input
-              type="checkbox"
-              id={`goal-${i}`}
-              name={`goal-${i}`}
-              value={`goal-${i}`}
-              disabled
-            />
-            <label
-              class="text-neutral-500"
-              for={`goal-${i}`}
-            >
-              {tour.goal}
-            </label>
-          </div>
+          {tour.goal != null && (
+            <div class="flex flex-row gap-2 items-center mb-2">
+              <input
+                type="checkbox"
+                id={`goal-${i}`}
+                name={`goal-${i}`}
+                value={`goal-${i}`}
+                disabled
+              />
+              <label
+                class="text-neutral-500"
+                for={`goal-${i}`}
+              >
+                {tour.goal}
+              </label>
+            </div>
+          )}
           <table class="table table-auto text-left">
             <thead class="text-sm font-bold uppercase text-neutral-600 border-b-1 border-neutral-400 bg-gray-50">
               <tr>

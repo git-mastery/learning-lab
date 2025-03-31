@@ -2,6 +2,7 @@
 title: Local vs remote repositories
 description: The differences between the types of repositories in Git
 order: 1
+draft: true
 prev:
   path: tours/introduction/origins-of-git
 next:

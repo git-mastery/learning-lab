@@ -2,7 +2,7 @@ export interface Tour {
   path: string;
   title: string;
   description: string;
-  goal: string;
+  goal?: string | null;
 }
 
 export const tours: Tour[] = [
@@ -13,10 +13,9 @@ export const tours: Tour[] = [
     goal: "Understand the fundamental of initializing a Git repository, and saving snapshots of the repository.",
   },
   {
-    path: "introduction",
-    title: "Introduction",
+    path: "detours",
+    title: "Detours",
     description:
-      "Introduction to the history and fundamental concepts of the Git version control system.",
-    goal: "Understand and articulate the origins of Git.",
+      "A collection of one-off lessons designed to enrich your understanding of various Git concepts!",
   },
 ];
