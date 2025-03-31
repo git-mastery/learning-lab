@@ -1,0 +1,63 @@
+---
+import { IoClose } from "react-icons/io5";
+import "../styles/modal.css";
+
+const { buttonClass, buttonText, modalId, modalTitle } = Astro.props;
+---
+
+<git-mastery-modal
+  data-modal-id={modalId}
+  class="relative"
+>
+  <button
+    id="open-modal-button"
+    type="button"
+    class:list={[
+      "w-full px-4 py-2 border-1 rounded-md hover:cursor-pointer",
+      buttonClass,
+    ]}
+  >
+    {buttonText}
+  </button>
+  <div
+    id="modal-container"
+    class="fixed overflow-y-hidden z-50 top-0 left-0 right-0 w-full hidden flex-col h-full max-h-screen bg-gray-100/75"
+  >
+    <div
+      id="modal-content"
+      class="flex-1 h-full max-h-screen my-12 lg:w-[60%] w-[90%] mx-auto overflow-y-auto bg-white rounded-md shadow-lg"
+    >
+      <div
+        class="flex flex-row sticky top-0 bg-white justify-between items-center p-4 border-b-1 border-b-neutral-200 shadow-2xs"
+      >
+        <p class="!m-0 font-bold text-2xl">{modalTitle}</p>
+        <div
+          id="close-button"
+          class="p-2 rounded-full hover:bg-gray-200 hover:cursor-pointer"
+        >
+          <IoClose />
+        </div>
+      </div>
+      <div class="p-8">
+        <slot />
+      </div>
+    </div>
+  </div>
+</git-mastery-modal>
+
+<script>
+  class Modal extends HTMLElement {
+    connectedCallback() {
+      const closeButton = this.querySelector("div#close-button");
+      const openModalButton = this.querySelector("button#open-modal-button");
+      const modalContainer = this.querySelector("div#modal-container");
+      closeButton.addEventListener("click", () => {
+        modalContainer.classList.toggle("active");
+      });
+      openModalButton.addEventListener("click", () => {
+        modalContainer.classList.add("active");
+      });
+    }
+  }
+  customElements.define("git-mastery-modal", Modal);
+</script>

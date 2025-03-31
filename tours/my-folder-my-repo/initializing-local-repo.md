@@ -2,6 +2,9 @@
 title: Initializing local repositories
 description: I have a project and I have Git, so how do I get started?
 order: 0
+prev:
+  path: tours
+  name: Back to tours
 next:
   path: tours/my-folder-my-repo/adding-files
 ---

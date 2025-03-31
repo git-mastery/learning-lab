@@ -42,6 +42,7 @@
     "preview": "astro preview"
   },
   "devDependencies": {
+    "@kindspells/astro-shield": "^1.7.1",
     "@types/lodash": "^4.17.16",
     "@types/lodash.kebabcase": "^4.1.9",
     "@types/remark-hint": "^1.0.6",
