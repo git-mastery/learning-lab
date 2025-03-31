@@ -20,10 +20,11 @@ const { buttonClass, buttonText, modalId, modalTitle } = Astro.props;
     {buttonText}
   </button>
   <div
-    id="modal-content"
+    id="modal-container"
     class="fixed overflow-y-hidden z-50 top-0 left-0 right-0 w-full hidden flex-col h-full max-h-screen bg-gray-100/75"
   >
     <div
+      id="modal-content"
       class="flex-1 h-full max-h-screen my-12 lg:w-[60%] w-[90%] mx-auto overflow-y-auto bg-white rounded-md shadow-lg"
     >
       <div
@@ -49,12 +50,12 @@ const { buttonClass, buttonText, modalId, modalTitle } = Astro.props;
     connectedCallback() {
       const closeButton = this.querySelector("div#close-button");
       const openModalButton = this.querySelector("button#open-modal-button");
-      const modalContent = this.querySelector("div#modal-content");
+      const modalContainer = this.querySelector("div#modal-container");
       closeButton.addEventListener("click", () => {
-        modalContent.classList.toggle("active");
+        modalContainer.classList.toggle("active");
       });
       openModalButton.addEventListener("click", () => {
-        modalContent.classList.add("active");
+        modalContainer.classList.add("active");
       });
     }
   }
