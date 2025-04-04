@@ -7,6 +7,8 @@ const remarkHandsOn: Plugin<[], Root> = () => {
   return (tree) => {
     visit(tree, (node: any, index: number, parent: any) => {
       if (node.type === "containerDirective" && node.name === "handsOn") {
+        const title = node.attributes["title"] ?? null;
+        console.log(title);
         const wrapper = mdElement(
           "div",
           {
@@ -17,7 +19,7 @@ const remarkHandsOn: Plugin<[], Root> = () => {
             {
               className: "hands-on-bar",
             },
-            mdParagraph(`🧤 Hands-on`, {
+            mdParagraph(`🧤 Hands-on${title != null ? `: ${title}` : ""}`, {
               className: "hands-on-title",
             }),
           ),

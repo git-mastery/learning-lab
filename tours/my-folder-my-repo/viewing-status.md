@@ -26,7 +26,7 @@ That's a lot of technical jargon. We will unpack it slowly in subsequent lessons
 We will be discussing snapshots in the next lesson!
 :::
 
-:::handsOn
+:::handsOn{title="Using git status"}
 Let's try running `git status` on the hands-on repository we've created previously!
 
 Run the following command:

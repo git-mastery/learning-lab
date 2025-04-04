@@ -46,7 +46,8 @@ This creates a hidden folder `.git/` in the root of your project folder, which c
 If you are interested to learn more about what goes into `.git/`, refer [to the documentation!](https://git-scm.com/docs/gitrepository-layout)
 :::
 
-:::::handsOn
+:::::handsOn{title="Create a local repository"}
+
 ::::callout{.note}
 Hands-on activities are short follow along demonstrations for each tour. Run the appropriate commands and play around with different variations!
 ::::

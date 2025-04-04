@@ -10,6 +10,7 @@ const remarkDetour: Plugin<[], Root> = () => {
         const attributes = node.attributes;
         const hasWip = attributes["class"]?.includes("wip") ?? false;
         const link = attributes["link"] ?? null;
+        const title = attributes["title"] ?? null;
         const wrapper = mdElement(
           "div",
           {
@@ -20,7 +21,7 @@ const remarkDetour: Plugin<[], Root> = () => {
             {
               className: "detour-bar",
             },
-            mdParagraph(`🛣️ Detour`, {
+            mdParagraph(`🛣️ Detour${title != null ? `: ${title}` : ""}`, {
               className: "detour-title",
             }),
           ),

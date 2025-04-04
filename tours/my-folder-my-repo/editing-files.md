@@ -20,7 +20,7 @@ We maintain the same mental model we introduced in [Adding files](/learning-lab/
 
 To edit a file, you can simply edit it as a regular file.
 
-:::handsOn
+:::handsOn{title="Editing files"}
 In your local repository, try to edit multiple files.
 
 For demonstration, we will edit the `hello_world.txt` and `new_file.txt` files by adding new lines of text to it.
@@ -92,7 +92,7 @@ Test out your understanding of making commits in Git with the `grocery-shopping`
 
 Similar to editing a file, we can delete files as we would in regular folders.
 
-:::handsOn
+:::handsOn{title="Deleting files"}
 In your local repository, pick a file that you have already added (via `git add`) to delete.
 
 For demonstration, we will delete the `hello_world.txt` file.
@@ -140,7 +140,7 @@ This is why the edited/deleted files are listed under a different section "Chang
 
 You may also have noticed that the description of the change of the file follows the action made on the file, for instance, when the file was edited, it was prefixed with `modified: `, but when the file was deleted, it was prefixed with `deleted: `.
 
-:::detour{link="/learning-lab/tours"}
+:::detour{link="/learning-lab/tours" .wip title="git status"}
 You will notice that `git status` is an incredibly powerful tool in understanding the state of your local repository.
 
 We have barely scratched the surface in understanding the different ways to interpret and use `git status`.

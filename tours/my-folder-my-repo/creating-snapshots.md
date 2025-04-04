@@ -58,7 +58,7 @@ To tell Git to include a given file in the next snapshot, you will use the `git 
 
 Adding an untracked file to a snapshot allows Git to know to look out for subsequent edits to the file in future snapshots.
 
-:::handsOn
+:::handsOn{title="Staging files for snapshot"}
 In your local repository, try adding the files by the filenames you had initially given them. For instance, we will be adding the `hello_word.txt` and `new_file.txt` file:
 
 ```bash
@@ -124,7 +124,7 @@ You will enter the commit message in the very first line. The commit message des
 
 <!--TODO: This should be about commit message etiquette-->
 
-:::detour{.wip}
+:::detour{.wip title="git commit message conventions"}
 The commit message has two components, the commit title and the commit description.
 
 Most of the time, the commit title is sufficient for most commits, but you may want to include more details about the commit, so you may utilize the commit description.
@@ -132,7 +132,7 @@ Most of the time, the commit title is sufficient for most commits, but you may w
 We will be covering the conventions for Git commit messages in a subsequent detour!
 :::
 
-:::handsOn
+:::handsOn{title="Creating a snapshot"}
 Now that you have added your files to your snapshot, make the snapshot!
 
 ```bash
@@ -166,6 +166,6 @@ The files you had added should no longer be present in the list of untracked fil
 
 <!--TODO: This should be about git log-->
 
-:::detour{.wip}
+:::detour{.wip title="git log"}
 You might be wondering how you can view the past commits of your local repository. We will be covering it in a subsequent detour!
 :::

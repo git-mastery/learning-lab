@@ -3,19 +3,26 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { tours } from "../../tour-routing";
 import Modal from "../../components/Modal.astro";
+import { getLessonStructure } from "../../utils/lesson-structure";
+import { type Lesson } from "../../models/lesson"
 
-const posts = await getCollection("tours", (post) => !post.data.draft);
-const sortedTours = Object.groupBy(posts, ({ id }) => id.split("/").at(0));
+const posts: Lesson[] = (await getCollection("tours", (post) => !post.data.draft)).map(post => {
+  return {
+    entry: post,
+    structure: getLessonStructure(post.body),
+  }
+});
+const sortedTours = Object.groupBy(posts, ({ entry: { id } }) => id.split("/").at(0));
 Object.values(sortedTours).forEach((v) =>
   v.sort((a, b) => {
     if (
-      a.data.order == null ||
-      b.data.order == null ||
-      a.data.order === b.data.order
+      a.entry.data.order == null ||
+      b.entry.data.order == null ||
+      a.entry.data.order === b.entry.data.order
     ) {
       return 1;
     }
-    return a.data.order < b.data.order ? -1 : 1;
+    return a.entry.data.order < b.entry.data.order ? -1 : 1;
   }),
 );
 ---
@@ -93,32 +100,37 @@ Object.values(sortedTours).forEach((v) =>
               </label>
             </div>
           )}
-          <table class="table table-auto text-left">
+          <table class="table table-fixed text-left">
             <thead class="text-sm font-bold uppercase text-neutral-600 border-b-1 border-neutral-400 bg-gray-50">
               <tr>
                 <th
                   scope="col"
-                  class="px-4 py-2"
+                  class="px-4 py-2 align-top"
                 >
                   Lesson
                 </th>
                 <th
                   scope="col"
-                  class="px-4 py-2"
+                  class="px-4 py-2 align-top"
                 >
-                  Description
+                  Structure
                 </th>
               </tr>
             </thead>
             <tbody>
               {sortedTours[tour.path].map((data) => (
                 <tr
-                  data-path={data.id}
+                  data-path={data.entry.id}
                   class="lesson-row even:bg-gray-50 not-last:border-b-1 border-neutral-200 hover:cursor-pointer hover:bg-gray-100"
                 >
-                  <td class="px-4 py-2">{data.data.title}</td>
-                  <td class="px-4 py-2 text-sm text-neutral-400">
-                    {data.data.description}
+                  <td class="px-4 py-2 align-top">
+                    <p class="!mb-0">{data.entry.data.title}</p>
+                    <p class="ml-4 italic text-sm text-neutral-400">{data.entry.data.description}</p>
+                  </td>
+                  <td class="px-4 py-2 align-top">
+                    {
+                      data.structure.map(s => <p class="text-sm !mb-0">{s}</p>)
+                    }
                   </td>
                 </tr>
               ))}

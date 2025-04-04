@@ -27,6 +27,7 @@
     "react-icons": "^5.5.0",
     "rehype-parse": "^9.0.1",
     "rehype-pretty-code": "^0.14.0",
+    "remark": "^15.0.1",
     "remark-admonitions": "^1.2.1",
     "remark-code-blocks": "^2.0.1",
     "remark-directive": "^4.0.0",

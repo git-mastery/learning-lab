@@ -30,7 +30,7 @@ To add new files to a local repository, simply create the file in the project fo
 
 If you are using Bash, you might use something like `touch <filename>` or if you're using an IDE, you can also interactively create it.
 
-:::::handsOn
+:::::handsOn{title="Adding files to local folder"}
 
 ::::callout{.note}
 We will discuss how to manage these changes in subsequent lessons.

@@ -43,7 +43,7 @@ Note that if you ignore a folder, ALL of its contents are automatically ignored 
 
 In the above, the `nested/okay.txt` will not be ignored by Git, but every other file in `nested/` will continue to be nested. You may also have noticed but you can specify comments in `.gitignore` using `#`.
 
-::::::handsOn
+::::::handsOn{title="Creating .gitignore"}
 Let's start with creating your very first `.gitignore` file!
 
 :::::steps
@@ -130,7 +130,7 @@ Similar to what we've been doing every hands-on in this tour, create a snapshot 
 :::::
 ::::::
 
-:::detour{.wip}
+:::detour{.wip title=".gitignore"}
 There are a lot more complexities that go into `.gitignore`.
 
 For instance, try adding a tracked file into `.gitignore`. You may notice that any future changes to the file will be ignored, but it would have existed in past snapshots. What if you want to ignore the file entirely?
