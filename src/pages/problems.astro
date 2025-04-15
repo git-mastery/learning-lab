@@ -1,0 +1,65 @@
+---
+import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Link from "../components/Link.astro";
+import { Code } from "astro/components";
+
+const problemSetsResponse = await fetch(
+  "https://raw.githubusercontent.com/git-mastery/problems-directory/refs/heads/main/problems.json",
+);
+const problemSets = await problemSetsResponse.json();
+const problemSetGroups = new Map();
+for (const problemSet of problemSets) {
+  for (const topic of problemSet.topics) {
+    if (topic === "problem-set") {
+      continue;
+    }
+    const existingProblemSets = problemSetGroups.get(topic) ?? [];
+    existingProblemSets.push(problemSet);
+    problemSetGroups.set(topic, existingProblemSets);
+  }
+}
+
+const sortedProblemSetGroups = new Map([...problemSetGroups.entries()].sort());
+---
+
+<BaseLayout title="Problems">
+  <div class="lg:w-[80%] w-[90%] mx-auto my-12">
+    <h1>Problems</h1>
+    <p>
+      Make sure you have setup Git-Mastery on your local machine via the <a
+        href="/learning-lab/setup"
+      >
+        setup guide
+      </a>.
+    </p>
+    <p>Download code snippets by using the following command:</p>
+    <Code
+      class="p-4 rounded-md"
+      code={`bash download.sh <problem set name>`}
+      lang="bash"
+    />
+
+    {
+      Array.from(sortedProblemSetGroups).map(([topic, problemSets]) => (
+        <div>
+          <h2>{topic}</h2>
+          <ul>
+            {problemSets.map(
+              (problemSet: { html_url: string; name: string }) => (
+                <li>
+                  <Link
+                    href={problemSet.html_url}
+                    class="!underline"
+                  >
+                    {problemSet.name}
+                  </Link>
+                </li>
+              ),
+            )}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>
