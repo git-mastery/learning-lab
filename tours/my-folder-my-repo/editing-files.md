@@ -140,13 +140,11 @@ This is why the edited/deleted files are listed under a different section "Chang
 
 You may also have noticed that the description of the change of the file follows the action made on the file, for instance, when the file was edited, it was prefixed with `modified: `, but when the file was deleted, it was prefixed with `deleted: `.
 
-:::detour{link="/learning-lab/tours" .wip title="git status"}
-You will notice that `git status` is an incredibly powerful tool in understanding the state of your local repository.
+::::detour{link="/learning-lab/tours" .wip title="git status"}
+Want to fully understand the repository status?
 
-We have barely scratched the surface in understanding the different ways to interpret and use `git status`.
-
-If you are interested in learning more about how `git status` works, check out this detour!
-:::
+Check out this detour on how to interpret and use `git status`!
+::::
 
 :::::exercises
 ::::exercise{name="amateur-detective" recommendation="Must do"}
