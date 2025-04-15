@@ -166,6 +166,8 @@ The files you had added should no longer be present in the list of untracked fil
 
 <!--TODO: This should be about git log-->
 
-:::detour{.wip title="git log"}
-You might be wondering how you can view the past commits of your local repository. We will be covering it in a subsequent detour!
+:::detour{.wip link="tours" title="git log"}
+Want to read past snapshots and understand Git history?
+
+Check out this detour on learning how to use `git log` and navigate Git history!
 :::
